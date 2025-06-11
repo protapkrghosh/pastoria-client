@@ -4,3 +4,20 @@
 @plugin "daisyui" {
    themes: light --default, dark --prefersdark, cupcake, aqua;
 }
+
+@plugin "daisyui/theme" {
+   name: "light";
+   default: true;
+   --color-primary: #3caa9f;
+   --color-secondary: #ECF7F6;
+   --color-black: #1C171D;
+   --color-accent: #666666;
+}
+
+.navLinks {
+   @apply mx-4 text-[16px] font-medium border-primary hover:border-b-2
+}
+
+.navbar ul .active {
+   @apply text-primary border-b-2 pb-1
+}
