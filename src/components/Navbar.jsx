@@ -3,8 +3,7 @@ import { Link, NavLink } from "react-router";
 import { Tooltip } from "react-tooltip";
 import toast from "react-hot-toast";
 import { AuthContext } from "../Context/AuthProvider";
-import { signOut } from "firebase/auth";
-import { auth } from "../firebase/firebase.config";
+import logo from "../../public/logo.png";
 
 const Navbar = () => {
    const { user, signOutUser } = useContext(AuthContext);
@@ -92,7 +91,11 @@ const Navbar = () => {
                      to={"/"}
                      className="text-primary text-3xl font-semibold islandMoments"
                   >
-                     Pastoria
+                     <img
+                        src={logo}
+                        alt="Logo"
+                        className="h-14"
+                     />
                   </Link>
                </div>
                <div className="navbar-center hidden lg:flex">
