@@ -4,7 +4,7 @@ import Home from "../Pages/Home";
 import PageNotFound from "../components/PageNotFound";
 import SignIn from "../Pages/SignIn";
 import SignUp from "../Pages/SignUp";
-import { FidgetSpinner } from "react-loader-spinner";
+import { ThreeCircles } from "react-loader-spinner";
 
 export const router = createBrowserRouter([
    {
@@ -12,14 +12,14 @@ export const router = createBrowserRouter([
       Component: Root,
       hydrateFallbackElement: (
          <div className="flex justify-center items-center min-h-[50dvh]">
-            <FidgetSpinner
+            <ThreeCircles
                visible={true}
                height="100"
                width="100"
-               ariaLabel="fidget-spinner-loading"
+               color="#e2b13c"
+               ariaLabel="three-circles-loading"
                wrapperStyle={{}}
-               wrapperClass="fidget-spinner-wrapper"
-               backgroundColor="#3caa9f"
+               wrapperClass=""
             />
          </div>
       ),

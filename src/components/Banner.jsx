@@ -8,7 +8,7 @@ import slider2 from "../assets/gallery1.jpg";
 import slider3 from "../assets/gallery3.jpg";
 import slider4 from "../assets/gallery4.jpg";
 import slider5 from "../assets/gallery2.jpg";
-import { FidgetSpinner } from "react-loader-spinner";
+import { ThreeCircles } from "react-loader-spinner";
 import { AuthContext } from "../Context/AuthProvider";
 import locationImg from "../assets/location.png";
 
@@ -29,12 +29,14 @@ const Banner = () => {
    if (loading) {
       return (
          <div className="flex justify-center items-center min-h-dvh">
-            <FidgetSpinner
+            <ThreeCircles
                visible={true}
                height="100"
                width="100"
-               ariaLabel="fidget-spinner-loading"
-               backgroundColor="#3caa9f"
+               color="#e2b13c"
+               ariaLabel="three-circles-loading"
+               wrapperStyle={{}}
+               wrapperClass=""
             />
          </div>
       );
