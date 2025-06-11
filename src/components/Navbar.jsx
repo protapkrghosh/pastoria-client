@@ -83,7 +83,7 @@ const Navbar = () => {
                      to={"/"}
                      className="text-primary text-3xl font-semibold islandMoments"
                   >
-                     HomiFy
+                     Pastoria
                   </Link>
                </div>
                <div className="navbar-center hidden lg:flex">
