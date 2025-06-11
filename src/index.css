@@ -10,9 +10,10 @@
    default: true;
    --color-primary: #e2b13c;
    --color-secondary: #777777;
-   --color-black: #252930;
+   --color-black: #222222;
    --color-accent: #e1e1e1;
    --color-base-200: #f8f8f8;
+   --color-base-300: #929399;
 }
 
 @plugin "daisyui/theme" {

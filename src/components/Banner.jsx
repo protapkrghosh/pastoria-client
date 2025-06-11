@@ -97,7 +97,7 @@ const Banner = () => {
 
          {/* Information Card */}
          <div className="flex justify-center">
-            <div className="md:absolute -bottom-72 z-40 w-full md:w-11/12 shadow-2xl">
+            <div className="md:absolute -bottom-72 z-40 w-full md:w-11/12 shadow-lg">
                <div className="grid grid-cols-1 md:grid-cols-3 bg-base-200 text-black">
                   {/* Open Hours */}
                   <div className="bg-white text-center px-6 py-10 flex flex-col items-center gap-4">
@@ -119,7 +119,7 @@ const Banner = () => {
                   </div>
 
                   {/* Find Location */}
-                  <div className="bg-black text-white text-center px-6 py-10 flex flex-col items-center gap-4">
+                  <div className="bg-[#252930] text-white text-center px-6 py-10 flex flex-col items-center gap-4">
                      <div className="bg-[#30343B] p-6 rounded-full">
                         <img
                            src={locationImg}
