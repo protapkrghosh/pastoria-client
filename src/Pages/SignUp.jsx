@@ -84,7 +84,6 @@ const SignUp = () => {
          .then((result) => toast.success("Sign In Successfully"))
          .catch((error) => {
             toast.error(error.code);
-            console.log(error);
          });
    };
 
@@ -93,7 +92,6 @@ const SignUp = () => {
          .then((result) => toast.success("Sign In Successfully"))
          .catch((error) => {
             toast.error(error.code);
-            console.log(error);
          });
    };
 

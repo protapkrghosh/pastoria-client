@@ -3,10 +3,11 @@ import { Link, NavLink } from "react-router";
 import { Tooltip } from "react-tooltip";
 import toast from "react-hot-toast";
 import { AuthContext } from "../Context/AuthProvider";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase/firebase.config";
 
 const Navbar = () => {
-   // const { user } = useContext(AuthContext);
-   // console.log(user);
+   const { user, signOutUser } = useContext(AuthContext);
 
    const links = [
       <NavLink to={"/"} key={"home"} className={"navLinks"}>
@@ -29,6 +30,14 @@ const Navbar = () => {
          Add Artifacts
       </NavLink>,
    ];
+
+   const handleSignOut = () => {
+      signOutUser()
+         .then(() => {
+            toast.success("SignOut Successful");
+         })
+         .catch((error) => toast.error(error.code));
+   };
 
    return (
       <div className="bg-[#fff] sticky top-0 border-b border-[#d8efed] z-50">
@@ -91,14 +100,14 @@ const Navbar = () => {
                </div>
 
                <div className="navbar-end gap-3">
-                  {/* {user ? (
-                     <> */}
+                  {user ? (
+                     <>
                         <div
                            className="avatar avatar-online"
                            data-tooltip-id="user-tooltip"
                            data-tooltip-place="bottom"
                         >
-                           {/* <div className="w-10 rounded-full ring-[#e7f0ef] ring-2 ring-offset-2">
+                           <div className="w-10 rounded-full ring-[#e7f0ef] ring-2 ring-offset-2">
                               <img
                                  src={
                                     user?.photoURL
@@ -107,15 +116,15 @@ const Navbar = () => {
                                  }
                                  alt="User Avatar"
                               />
-                           </div> */}
+                           </div>
                         </div>
 
                         <Tooltip
                            id="user-tooltip"
-                           className="text-black bg-[#c4dddb]"
+                           className="text-black bg-secondary"
                            clickable={true}
                            style={{
-                              backgroundColor: "#c4dddb",
+                              backgroundColor: "#E1E1E1",
                               color: "#000",
                               padding: "20px",
                               borderRadius: "5px",
@@ -124,22 +133,24 @@ const Navbar = () => {
                            }}
                         >
                            <div>
-                              {/* <div>
+                              <div>
                                  <h4 className="text-[17px] font-semibold capitalize">
                                     {user?.displayName}
                                  </h4>
                                  <p className="text-slate-600">{user?.email}</p>
-                              </div> */}
+                              </div>
+
                               <button
+                                 onClick={handleSignOut}
                                  className="btn btn-primary btnHover text-white rounded-none uppercase mt-4"
                               >
                                  Sign Out
                               </button>
                            </div>
                         </Tooltip>
-                     {/* </>
+                     </>
                   ) : (
-                     <> */}
+                     <>
                         <div className="hidden md:block space-x-3">
                            {/* <Link
                               to={"/signin"}
@@ -155,8 +166,8 @@ const Navbar = () => {
                               Sign Up
                            </Link>
                         </div>
-                     {/* </>
-                  )} */}
+                     </>
+                  )}
                </div>
             </div>
          </div>

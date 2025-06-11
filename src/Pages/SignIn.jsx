@@ -19,12 +19,10 @@ const SignIn = () => {
 
       signInUser(email, password)
          .then((result) => {
-            console.log(result.user);
             toast.success("Sign In Successfully");
             form.reset();
          })
          .catch((error) => {
-            console.log(error);
             toast.error(error.code);
          });
    };
@@ -34,7 +32,6 @@ const SignIn = () => {
          .then((result) => toast.success("Sign In Successfully"))
          .catch((error) => {
             toast.error(error.code);
-            console.log(error);
          });
    };
 
@@ -43,7 +40,6 @@ const SignIn = () => {
          .then((result) => toast.success("Sign In Successfully"))
          .catch((error) => {
             toast.error(error.code);
-            console.log(error);
          });
    };
 
