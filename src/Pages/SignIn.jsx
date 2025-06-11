@@ -1,14 +1,51 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { ImEye, ImEyeBlocked } from "react-icons/im";
 import { FaGithub } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
+import { AuthContext } from "../Context/AuthProvider";
+import toast from "react-hot-toast";
 
 const SignIn = () => {
+   const { signInUser, googleSignIn, gitHubSignIn } = useContext(AuthContext);
    const [showPassword, setShowPassword] = useState(false);
 
-   const handleSignUp = () => {};
+   const handleSignUp = (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const email = form.email.value;
+      const password = form.password.value;
+
+      signInUser(email, password)
+         .then((result) => {
+            console.log(result.user);
+            toast.success("Sign In Successfully");
+            form.reset();
+         })
+         .catch((error) => {
+            console.log(error);
+            toast.error(error.code);
+         });
+   };
+
+   const handleGoogleSignIn = () => {
+      googleSignIn()
+         .then((result) => toast.success("Sign In Successfully"))
+         .catch((error) => {
+            toast.error(error.code);
+            console.log(error);
+         });
+   };
+
+   const handleGitHubSignIn = () => {
+      gitHubSignIn()
+         .then((result) => toast.success("Sign In Successfully"))
+         .catch((error) => {
+            toast.error(error.code);
+            console.log(error);
+         });
+   };
 
    return (
       <div className="container mx-auto px-2 md:px-6 lg:px-12 py-16 bg-base-200">
@@ -37,14 +74,20 @@ const SignIn = () => {
                            Sign In with social
                         </h3>
                         <div className="flex gap-5">
-                           <div className="bg-[#F3F3F3] hover:bg-[#e6e5e5] text-black p-4 rounded-full w-fit duration-300 group cursor-pointer">
+                           <div
+                              onClick={handleGoogleSignIn}
+                              className="bg-[#F3F3F3] hover:bg-[#e6e5e5] text-black p-4 rounded-full w-fit duration-300 group cursor-pointer"
+                           >
                               <FcGoogle
                                  size={25}
                                  className="group-hover:scale-110 duration-300"
                               />
                            </div>
 
-                           <div className="bg-[#F3F3F3] hover:bg-[#e6e5e5] text-black p-4 rounded-full w-fit duration-300 group cursor-pointer">
+                           <div
+                              onClick={handleGitHubSignIn}
+                              className="bg-[#F3F3F3] hover:bg-[#e6e5e5] text-black p-4 rounded-full w-fit duration-300 group cursor-pointer"
+                           >
                               <FaGithub
                                  size={25}
                                  className="group-hover:scale-110 duration-300"
@@ -130,7 +173,10 @@ const SignIn = () => {
 
                      <small className="text-black">
                         Don't have an account?{" "}
-                        <Link to={"/signup"} className="hover:underline font-medium">
+                        <Link
+                           to={"/signup"}
+                           className="hover:underline font-medium"
+                        >
                            Sign up
                         </Link>
                      </small>

@@ -81,7 +81,7 @@ const SignUp = () => {
 
    const handleGoogleSignIn = () => {
       googleSignIn()
-         .then((result) => toast.success("Sign Up Successfully"))
+         .then((result) => toast.success("Sign In Successfully"))
          .catch((error) => {
             toast.error(error.code);
             console.log(error);
@@ -90,7 +90,7 @@ const SignUp = () => {
 
    const handleGitHubSignIn = () => {
       gitHubSignIn()
-         .then((result) => toast.success("Sign Up Successfully"))
+         .then((result) => toast.success("Sign In Successfully"))
          .catch((error) => {
             toast.error(error.code);
             console.log(error);
