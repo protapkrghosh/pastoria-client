@@ -12,10 +12,15 @@
    --color-secondary: #ECF7F6;
    --color-black: #1C171D;
    --color-accent: #666666;
+   --color-base-200: #EFEFEF;
 }
 
 .navLinks {
    @apply mx-4 text-[16px] font-medium border-primary hover:border-b-2
+}
+
+.cusInput {
+   @apply focus-within:outline-none focus-within:ring-0 w-full focus-within:border-primary h-[44px]
 }
 
 .navbar ul .active {

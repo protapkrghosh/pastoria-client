@@ -65,14 +65,14 @@ const Navbar = () => {
 
                         <Link
                            to={"/signin"}
-                           className="btn btn-primary btnHover text-white rounded-none yesevaOne tracking-widest uppercase mb-4"
+                           className="btn btn-primary btnHover text-white rounded-none uppercase mb-4"
                         >
                            Sign In
                         </Link>
 
                         <Link
                            to={"/signup"}
-                           className="btn btn-primary btnHover text-white rounded-none yesevaOne tracking-widest uppercase"
+                           className="btn btn-primary btnHover text-white rounded-none uppercase"
                         >
                            Sign Up
                         </Link>
@@ -92,13 +92,13 @@ const Navbar = () => {
 
                <div className="navbar-end gap-3">
                   {/* {user ? (
-                     <>
+                     <> */}
                         <div
                            className="avatar avatar-online"
                            data-tooltip-id="user-tooltip"
                            data-tooltip-place="bottom"
                         >
-                           <div className="w-10 rounded-full ring-[#e7f0ef] ring-2 ring-offset-2">
+                           {/* <div className="w-10 rounded-full ring-[#e7f0ef] ring-2 ring-offset-2">
                               <img
                                  src={
                                     user?.photoURL
@@ -107,7 +107,7 @@ const Navbar = () => {
                                  }
                                  alt="User Avatar"
                               />
-                           </div>
+                           </div> */}
                         </div>
 
                         <Tooltip
@@ -124,39 +124,38 @@ const Navbar = () => {
                            }}
                         >
                            <div>
-                              <div>
+                              {/* <div>
                                  <h4 className="text-[17px] font-semibold capitalize">
                                     {user?.displayName}
                                  </h4>
                                  <p className="text-slate-600">{user?.email}</p>
-                              </div>
+                              </div> */}
                               <button
-                                 onClick={handleSignOut}
-                                 className="btn btn-primary btnHover text-white rounded-none yesevaOne tracking-widest uppercase mt-4"
+                                 className="btn btn-primary btnHover text-white rounded-none uppercase mt-4"
                               >
                                  Sign Out
                               </button>
                            </div>
                         </Tooltip>
-                     </>
+                     {/* </>
                   ) : (
-                     <>
+                     <> */}
                         <div className="hidden md:block space-x-3">
                            <Link
                               to={"/signin"}
-                              className="btn btn-primary btnHover text-white rounded-none yesevaOne tracking-widest uppercase "
+                              className="btn btn-primary btnHover text-white rounded-none uppercase "
                            >
                               Sign In
                            </Link>
 
                            <Link
                               to={"/signup"}
-                              className="btn btn-primary btnHover text-white rounded-none yesevaOne tracking-widest uppercase"
+                              className="btn btn-primary btnHover text-white rounded-none uppercase"
                            >
                               Sign Up
                            </Link>
                         </div>
-                     </>
+                     {/* </>
                   )} */}
                </div>
             </div>
