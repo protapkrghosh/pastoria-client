@@ -11,16 +11,16 @@ const SignIn = () => {
    const handleSignUp = () => {};
 
    return (
-      <div className="container mx-auto px-2 md:px-6 lg:px-12 py-16 bg-secondary">
+      <div className="container mx-auto px-2 md:px-6 lg:px-12 py-16 bg-base-200">
          <Helmet>
             <title>Sign In — HomiFy</title>
          </Helmet>
 
          <div className="lg:flex md:max-w-6xl md:w-full mx-auto bg-white shadow-lg">
-            <div className="lg:w-[50%] border-r border-base-200 py-16">
+            <div className="lg:w-[50%] border-r border-accent py-16">
                <div>
                   <div className="hero-content mt-14">
-                     <div className="max-w-md">
+                     <div className="text-secondary max-w-md">
                         <div>
                            <h1 className="mb-5 text-3xl md:text-4xl font-bold uppercase">
                               welcome to Pastoria
@@ -61,7 +61,7 @@ const SignIn = () => {
                <h1 className="text-3xl text-black font-extrabold tracking-wider">
                   Pastoria
                </h1>
-               <p className="text-[14px] md:text-[20px] font-semibold mt-2 mb-7">
+               <p className="text-secondary text-[14px] md:text-[20px] font-semibold mt-2 mb-7">
                   Sign Into Your Account
                </p>
 
@@ -128,9 +128,9 @@ const SignIn = () => {
                         className="btn btn-primary btnHover text-white uppercase w-full mt-5 mb-3 h-[44px] rounded-full"
                      />
 
-                     <small className="text-accent">
+                     <small className="text-black">
                         Don't have an account?{" "}
-                        <Link to={"/signup"} className="hover:underline">
+                        <Link to={"/signup"} className="hover:underline font-medium">
                            Sign up
                         </Link>
                      </small>

@@ -11,16 +11,16 @@ const SignUp = () => {
    const handleSignUp = () => {};
 
    return (
-      <div className="container mx-auto px-2 md:px-6 lg:px-12 py-16 bg-secondary">
+      <div className="container mx-auto px-2 md:px-6 lg:px-12 py-16 bg-base-200">
          <Helmet>
             <title>Sign Up — HomiFy</title>
          </Helmet>
 
          <div className="lg:flex md:max-w-6xl md:w-full mx-auto bg-white shadow-lg">
-            <div className="lg:w-[50%] border-r border-base-200 py-16">
+            <div className="lg:w-[50%] border-r border-accent py-16">
                <div>
                   <div className="hero-content mt-14">
-                     <div className="max-w-md">
+                     <div className="text-secondary max-w-md">
                         <div>
                            <h1 className="mb-5 text-3xl md:text-4xl font-bold uppercase">
                               welcome to Pastoria
@@ -36,6 +36,7 @@ const SignUp = () => {
                         <h3 className="font-medium mt-7 mb-3 capitalize">
                            Sign In with social
                         </h3>
+
                         <div className="flex gap-5">
                            <div className="bg-[#F3F3F3] hover:bg-[#e6e5e5] text-black p-4 rounded-full w-fit duration-300 group cursor-pointer">
                               <FcGoogle
@@ -58,10 +59,10 @@ const SignUp = () => {
 
             {/* Form */}
             <div className="lg:w-[50%] text-center bg-white px-4 md:px-0 py-16">
-               <h1 className="text-3xl text-black font-extrabold tracking-wider">
+               <h1 className="text-black text-3xl font-extrabold tracking-wider">
                   Pastoria
                </h1>
-               <p className="text-[14px] md:text-[20px] font-semibold mt-2 mb-7">
+               <p className="text-secondary text-[14px] md:text-[20px] font-semibold mt-2 mb-7">
                   Create your account
                </p>
 
@@ -176,11 +177,11 @@ const SignUp = () => {
                         </span>
                      </label>
 
-                     <small className="flex items-center gap-2 text-accent">
+                     <small className="flex items-center gap-2 text-black">
                         <input
                            type="checkbox"
                            name="terms"
-                           className="checkbox checkbox-xs checkbox-primary"
+                           className="checkbox checkbox-xs checkbox-secondary"
                         />
                         <p>I agree to the Terms & Policy</p>
                      </small>
@@ -191,9 +192,12 @@ const SignUp = () => {
                         className="btn btn-primary btnHover text-white uppercase w-full mt-5 mb-3 h-[44px] rounded-full"
                      />
 
-                     <small className="text-accent">
+                     <small className="text-black">
                         Already a member?{" "}
-                        <Link to={"/signin"} className="hover:underline">
+                        <Link
+                           to={"/signin"}
+                           className="hover:underline font-medium"
+                        >
                            Sign In
                         </Link>
                      </small>

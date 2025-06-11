@@ -8,11 +8,11 @@
 @plugin "daisyui/theme" {
    name: "light";
    default: true;
-   --color-primary: #3caa9f;
-   --color-secondary: #ECF7F6;
-   --color-black: #1C171D;
-   --color-accent: #666666;
-   --color-base-200: #EFEFEF;
+   --color-primary: #E2B13C;
+   --color-secondary: #777777;
+   --color-black: #222222;
+   --color-accent: #E1E1E1;
+   --color-base-200: #F8F8F8;
 }
 
 .navLinks {
