@@ -89,9 +89,16 @@ const Navbar = () => {
 
                   <Link
                      to={"/"}
-                     className="text-primary text-3xl font-semibold islandMoments"
+                     className="text-primary text-3xl font-semibold flex items-center gap-2"
                   >
-                     <img src={logo} alt="Logo" className="h-14 contrast-125 rounded-full" />
+                     <img
+                        src={logo}
+                        alt="Logo"
+                        className="h-12 contrast-125 rounded-full"
+                     />
+                     <span className="hidden md:block rancho tracking-wider">
+                        Pastoria
+                     </span>
                   </Link>
                </div>
                <div className="navbar-center hidden lg:flex">
@@ -160,7 +167,7 @@ const Navbar = () => {
                         >
                            <div>
                               <div>
-                                 <h4 className="text-[17px] font-semibold capitalize">
+                                 <h4 className="text-[23px] font-semibold capitalize rancho tracking-widest">
                                     {user?.displayName}
                                  </h4>
                                  <p className="text-slate-600">{user?.email}</p>

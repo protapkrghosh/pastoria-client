@@ -1,0 +1,32 @@
+[
+   {
+      "id": 1,
+      "title": "Antikythera Mechanism: Ancient Greek Astronomical Device",
+      "subtitle": "Ancient Greek analog computer",
+      "description": "Recovered from a shipwreck off the coast of Antikythera, this 2,000-year-old device was used to predict astronomical positions and eclipses—often considered the world's first computer."
+   },
+   {
+      "id": 2,
+      "title": "Dead Sea Scrolls: Oldest Biblical Manuscripts",
+      "subtitle": "Biblical manuscripts from the Second Temple period",
+      "description": "Discovered in the Qumran Caves near the Dead Sea, these ancient scrolls include the earliest known surviving copies of biblical texts and provide vital insights into early Judaism."
+   },
+   {
+      "id": 3,
+      "title": "Mask of Tutankhamun: Golden Face of the Boy King",
+      "subtitle": "Funerary mask of the boy king",
+      "description": "This iconic golden mask was found in the tomb of the young Egyptian Pharaoh Tutankhamun and is one of the most recognizable artifacts of ancient Egypt."
+   },
+   {
+      "id": 4,
+      "title": "Sutton Hoo Helmet: Royal Anglo-Saxon Artifact",
+      "subtitle": "Anglo-Saxon ceremonial helmet",
+      "description": "Unearthed in Suffolk, England, this ornate helmet was part of a royal burial ship and provides valuable insight into early medieval craftsmanship and culture."
+   },
+   {
+      "id": 5,
+      "title": "Phaistos Disc: Mystery of Minoan Writing",
+      "subtitle": "Mysterious script from Minoan civilization",
+      "description": "Discovered in Crete, this clay disc features stamped symbols in a spiral arrangement. Its meaning remains undeciphered, making it one of archaeology's most intriguing puzzles."
+   }
+]

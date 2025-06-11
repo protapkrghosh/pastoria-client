@@ -1,6 +1,6 @@
-@import "tailwindcss";
-/* @plugin "daisyui"; */
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rancho&display=swap");
 
+@import "tailwindcss";
 @plugin "daisyui" {
    themes: all;
 }
@@ -10,7 +10,7 @@
    default: true;
    --color-primary: #e2b13c;
    --color-secondary: #777777;
-   --color-black: #222222;
+   --color-black: #252930;
    --color-accent: #e1e1e1;
    --color-base-200: #f8f8f8;
 }
@@ -19,6 +19,18 @@
    name: "dark";
    /* --color-primary: blue;
    --color-secondary: teal; */
+}
+
+body {
+   font-family: "Poppins", sans-serif;
+}
+
+.ptSerif {
+   font-family: "PT Serif", serif;
+}
+
+.rancho {
+   font-family: "Rancho", cursive;
 }
 
 .navLinks {
@@ -31,4 +43,8 @@
 
 .navbar ul .active {
    @apply text-primary border-b-2 pb-1;
+}
+
+.btnHover {
+   @apply hover:bg-black hover:text-white duration-500 px-6 shadow-none border-none
 }
