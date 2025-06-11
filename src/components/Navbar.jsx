@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router";
 import { Tooltip } from "react-tooltip";
 import toast from "react-hot-toast";
 import { AuthContext } from "../Context/AuthProvider";
-import logo from "../../public/logo.png";
+import logo from "../assets/logo.jpg";
 
 const Navbar = () => {
    const { user, signOutUser } = useContext(AuthContext);
@@ -91,11 +91,7 @@ const Navbar = () => {
                      to={"/"}
                      className="text-primary text-3xl font-semibold islandMoments"
                   >
-                     <img
-                        src={logo}
-                        alt="Logo"
-                        className="h-14"
-                     />
+                     <img src={logo} alt="Logo" className="h-14 contrast-125 rounded-full" />
                   </Link>
                </div>
                <div className="navbar-center hidden lg:flex">
