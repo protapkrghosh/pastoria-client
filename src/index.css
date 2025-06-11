@@ -1,28 +1,34 @@
 @import "tailwindcss";
-@plugin "daisyui";
+/* @plugin "daisyui"; */
 
 @plugin "daisyui" {
-   themes: light --default, dark --prefersdark, cupcake, aqua;
+   themes: all;
 }
 
 @plugin "daisyui/theme" {
    name: "light";
    default: true;
-   --color-primary: #E2B13C;
+   --color-primary: #e2b13c;
    --color-secondary: #777777;
    --color-black: #222222;
-   --color-accent: #E1E1E1;
-   --color-base-200: #F8F8F8;
+   --color-accent: #e1e1e1;
+   --color-base-200: #f8f8f8;
+}
+
+@plugin "daisyui/theme" {
+   name: "dark";
+   /* --color-primary: blue;
+   --color-secondary: teal; */
 }
 
 .navLinks {
-   @apply mx-4 text-[16px] font-medium border-primary hover:border-b-2
+   @apply mx-4 text-[16px] font-medium border-primary hover:border-b-2;
 }
 
 .cusInput {
-   @apply focus-within:outline-none focus-within:ring-0 w-full focus-within:border-primary h-[44px]
+   @apply focus-within:outline-none focus-within:ring-0 w-full focus-within:border-primary h-[44px];
 }
 
 .navbar ul .active {
-   @apply text-primary border-b-2 pb-1
+   @apply text-primary border-b-2 pb-1;
 }
