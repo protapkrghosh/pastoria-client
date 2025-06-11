@@ -141,12 +141,12 @@ const Navbar = () => {
                   ) : (
                      <> */}
                         <div className="hidden md:block space-x-3">
-                           <Link
+                           {/* <Link
                               to={"/signin"}
                               className="btn btn-primary btnHover text-white rounded-none uppercase "
                            >
                               Sign In
-                           </Link>
+                           </Link> */}
 
                            <Link
                               to={"/signup"}

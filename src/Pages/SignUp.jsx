@@ -1,14 +1,101 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { ImEye, ImEyeBlocked } from "react-icons/im";
 import { FaGithub } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
+import { AuthContext } from "../Context/AuthProvider";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { updateProfile } from "firebase/auth";
+import { auth } from "../firebase/firebase.config";
 
 const SignUp = () => {
    const [showPassword, setShowPassword] = useState(false);
+   const { signUpUser, googleSignIn, gitHubSignIn } = useContext(AuthContext);
 
-   const handleSignUp = () => {};
+   const handleSignUp = (e) => {
+      // const formData = new FormData(form)
+      // const formInfo = Object.fromEntries(formData.entries());
+      e.preventDefault();
+      const form = e.target;
+      const name = form.name.value;
+      const email = form.email.value;
+      const photoURL = form.photoURL.value;
+      const password = form.password.value;
+      const terms = form.terms.checked;
+      const newUser = { name, email, photoURL };
+
+      // Password Validation
+      if (!/.{6}/.test(password)) {
+         toast.error("Must be more than 6 characters");
+         return;
+      } else if (!/(?=.*[a-z])/.test(password)) {
+         toast.error("At least one lowercase letter");
+         return;
+      } else if (!/(?=.*[A-Z])/.test(password)) {
+         toast.error("At least one uppercase letter");
+         return;
+      } else if (!/(?=.*\d)/.test(password)) {
+         toast.error("At least one digit");
+         return;
+      } else if (!/(?=.*[@$#!%*?&])/.test(password)) {
+         toast.error("At least one special character");
+         return;
+      }
+
+      if (!terms) {
+         toast.error("Please accept our Terms and Policy");
+         return;
+      }
+
+      signUpUser(email, password)
+         .then((res) => {
+            // Post userinfo in database
+            axios
+               .post(`${import.meta.env.VITE_URL}/users`, newUser)
+               .then((res) => {
+                  if (res.data.insertedId) {
+                     toast.success("Sign Up Successfully");
+                     form.reset();
+                  }
+               })
+               .catch((error) => {
+                  toast.error(error.code);
+               });
+
+            // Update user profile
+            const profile = {
+               displayName: name,
+               photoURL: photoURL,
+            };
+
+            updateProfile(auth.currentUser, profile)
+               .then(() => {})
+               .catch((error) => toast.error(error.code));
+         })
+         .catch((error) => {
+            toast.error(error.code);
+         });
+   };
+
+   const handleGoogleSignIn = () => {
+      googleSignIn()
+         .then((result) => toast.success("Sign Up Successfully"))
+         .catch((error) => {
+            toast.error(error.code);
+            console.log(error);
+         });
+   };
+
+   const handleGitHubSignIn = () => {
+      gitHubSignIn()
+         .then((result) => toast.success("Sign Up Successfully"))
+         .catch((error) => {
+            toast.error(error.code);
+            console.log(error);
+         });
+   };
 
    return (
       <div className="container mx-auto px-2 md:px-6 lg:px-12 py-16 bg-base-200">
@@ -38,14 +125,20 @@ const SignUp = () => {
                         </h3>
 
                         <div className="flex gap-5">
-                           <div className="bg-[#F3F3F3] hover:bg-[#e6e5e5] text-black p-4 rounded-full w-fit duration-300 group cursor-pointer">
+                           <div
+                              onClick={handleGoogleSignIn}
+                              className="bg-[#F3F3F3] hover:bg-[#e6e5e5] text-black p-4 rounded-full w-fit duration-300 group cursor-pointer"
+                           >
                               <FcGoogle
                                  size={25}
                                  className="group-hover:scale-110 duration-300"
                               />
                            </div>
 
-                           <div className="bg-[#F3F3F3] hover:bg-[#e6e5e5] text-black p-4 rounded-full w-fit duration-300 group cursor-pointer">
+                           <div
+                              onClick={handleGitHubSignIn}
+                              className="bg-[#F3F3F3] hover:bg-[#e6e5e5] text-black p-4 rounded-full w-fit duration-300 group cursor-pointer"
+                           >
                               <FaGithub
                                  size={25}
                                  className="group-hover:scale-110 duration-300"
