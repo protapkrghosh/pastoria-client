@@ -15,8 +15,6 @@ const SignUp = () => {
    const { signUpUser, googleSignIn, gitHubSignIn } = useContext(AuthContext);
 
    const handleSignUp = (e) => {
-      // const formData = new FormData(form)
-      // const formInfo = Object.fromEntries(formData.entries());
       e.preventDefault();
       const form = e.target;
       const name = form.name.value;
