@@ -9,15 +9,17 @@ const PrivateRoute = ({ children }) => {
 
    if (loading) {
       return (
-         <ThreeCircles
-            visible={true}
-            height="100"
-            width="100"
-            color="#e2b13c"
-            ariaLabel="three-circles-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-         />
+         <div className="flex justify-center items-center min-h-dvh">
+            <ThreeCircles
+               visible={true}
+               height="100"
+               width="100"
+               color="#e2b13c"
+               ariaLabel="three-circles-loading"
+               wrapperStyle={{}}
+               wrapperClass=""
+            />
+         </div>
       );
    }
 

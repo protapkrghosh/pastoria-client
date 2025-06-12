@@ -30,7 +30,7 @@ const Footer = () => {
                         alt="Logo"
                         className="h-12 contrast-125 rounded-full"
                      />
-                     <span className="hidden md:block rancho tracking-wider">
+                     <span className="rancho tracking-wider">
                         Pastoria
                      </span>
                   </Link>

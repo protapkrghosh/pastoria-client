@@ -7,6 +7,8 @@ import SignUp from "../Pages/SignUp";
 import { ThreeCircles } from "react-loader-spinner";
 import AddArtifact from "../Pages/AddArtifact";
 import PrivateRoute from "./PrivateRoute";
+import AllArtifacts from "../Pages/AllArtifacts";
+import axios from "axios";
 
 export const router = createBrowserRouter([
    {
@@ -45,6 +47,11 @@ export const router = createBrowserRouter([
                   <AddArtifact />,
                </PrivateRoute>
             ),
+         },
+         {
+            path: "all-artifacts",
+            Component: AllArtifacts,
+            loader: () => axios.get(`${import.meta.env.VITE_URL}/artifacts`),
          },
       ],
    },

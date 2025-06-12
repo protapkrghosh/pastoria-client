@@ -28,12 +28,12 @@ const AddArtifact = () => {
 
    return (
       <div>
-         <div className="min-h-screen bg-base-200 pt-16 pb-24 px-4 sm:px-10">
+         <div className="bg-base-200 container mx-auto px-3 sm:px-10 md:px-6 lg:px-12 pt-16 pb-24">
             <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg px-3 py-8 md:px-10 md:py-12 border border-gray-200">
                <div className="text-secondary text-center mb-12">
                   <h2 className="text-3xl font-bold mb-5">Add New Artifact</h2>
 
-                  <p className="md:w-[80%] mx-auto leading-8">
+                  <p className="md:w-[80%] mx-auto leading-8 text-justify md:text-center">
                      Join in preserving history by submitting artifacts from
                      your collection or research — together we build an open and
                      lasting archive of human heritage
