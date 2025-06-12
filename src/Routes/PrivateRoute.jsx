@@ -9,6 +9,7 @@ const PrivateRoute = ({ children }) => {
    if (loading) {
       return (
          <div className="flex justify-center items-center min-h-dvh">
+            {/* Loading Animation */}
             <img
                src="https://bookly-theme.myshopify.com/cdn/shop/files/icons8-literature_1.gif?v=1679027144&width=1920"
                alt=""

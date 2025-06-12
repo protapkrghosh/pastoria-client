@@ -31,11 +31,11 @@ const AddArtifact = () => {
          <div className="bg-base-200 container mx-auto px-3 sm:px-10 md:px-6 lg:px-12 pt-16 pb-24">
             <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg px-3 py-8 md:px-10 md:py-12 border border-gray-200">
                <div className="text-secondary text-center mb-12">
-                  <h2 className="rancho text-5xl font-bold tracking-wider mb-5">
+                  <h2 className="rancho text-5xl font-bold tracking-wider mb-5 opacity-60">
                      Add New Artifact
                   </h2>
 
-                  <p className="md:w-[80%] mx-auto leading-8 text-justify md:text-center">
+                  <p className="md:w-[80%] mx-auto leading-8 text-justify md:text-center text-base-300">
                      Join in preserving history by submitting artifacts from
                      your collection or research — together we build an open and
                      lasting archive of human heritage
@@ -170,15 +170,6 @@ const AddArtifact = () => {
                         value="Add Artifact"
                         className="btn btn-primary btnHover text-white rounded-none"
                      />
-
-                     {/* <button
-                        type="submit"
-                        className="btn btn-primary btnHover text-white rounded-none"
-                        disabled={loading}
-                     >
-                        {loading ? "Adding..." : "Add Artifact"}
-                        Add Artifact
-                     </button> */}
                   </div>
                </form>
             </div>

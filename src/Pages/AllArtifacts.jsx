@@ -6,7 +6,7 @@ const AllArtifacts = () => {
 
    return (
       <div className="container mx-auto px-2 md:px-6 lg:px-12 py-16 bg-base-200">
-         <h1 className="rancho text-5xl font-bold text-secondary text-center tracking-wider mb-10">
+         <h1 className="rancho text-5xl font-bold text-secondary text-center tracking-wider mb-10 opacity-60">
             All Historical Artifacts
          </h1>
 
