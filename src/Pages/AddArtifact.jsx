@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../Context/AuthProvider";
 
 const AddArtifact = () => {
+   const { user } = useContext(AuthContext);
+   
    const handleAddArtifact = (e) => {
       e.preventDefault();
+      console.log('Submitted Form');
    };
 
    return (
@@ -24,24 +28,27 @@ const AddArtifact = () => {
                   className="grid grid-cols-1 md:grid-cols-2 gap-6"
                >
                   <div>
-                     <label className="label">Artifact Name</label>
+                     <label className="label">Artifact Name *</label>
                      <input
+                        required
                         className="input input-bordered cusInput w-full"
                         placeholder="Rosetta Stone"
                      />
                   </div>
 
                   <div>
-                     <label className="label">Artifact Image (URL)</label>
+                     <label className="label">Artifact Image (URL) *</label>
                      <input
+                        required
                         className="input input-bordered cusInput w-full"
-                        placeholder="https://..."
+                        placeholder="https://"
                      />
                   </div>
 
                   <div>
-                     <label className="label">Artifact Type</label>
+                     <label className="label">Artifact Type *</label>
                      <select className="select select-bordered cusInput w-full">
+                        <option>Selected Type</option>
                         <option>Tools</option>
                         <option>Weapons</option>
                         <option>Documents</option>
@@ -51,40 +58,45 @@ const AddArtifact = () => {
                   </div>
 
                   <div>
-                     <label className="label">Historical Context</label>
+                     <label className="label">Historical Context *</label>
                      <input
+                        required
                         className="input input-bordered cusInput w-full"
                         placeholder="Used during Roman Empire..."
                      />
                   </div>
 
                   <div>
-                     <label className="label">Created At</label>
+                     <label className="label">Created At *</label>
                      <input
+                        required
                         className="input input-bordered cusInput w-full"
                         placeholder="100 BC"
                      />
                   </div>
 
                   <div>
-                     <label className="label">Discovered At</label>
+                     <label className="label">Discovered At *</label>
                      <input
+                        required
                         className="input input-bordered cusInput w-full"
                         placeholder="1799"
                      />
                   </div>
 
                   <div>
-                     <label className="label">Discovered By</label>
+                     <label className="label">Discovered By *</label>
                      <input
+                        required
                         className="input input-bordered cusInput w-full"
                         placeholder="Pierre-François Bouchard"
                      />
                   </div>
 
                   <div>
-                     <label className="label">Present Location</label>
+                     <label className="label">Present Location *</label>
                      <input
+                        required
                         className="input input-bordered cusInput w-full"
                         placeholder="British Museum, London"
                      />
@@ -95,6 +107,7 @@ const AddArtifact = () => {
                      <input
                         readOnly
                         className="input input-bordered cusInput w-full cursor-no-drop bg-gray-100"
+                        defaultValue={user?.displayName}
                      />
                   </div>
 
@@ -103,12 +116,14 @@ const AddArtifact = () => {
                      <input
                         readOnly
                         className="input input-bordered cusInput w-full cursor-no-drop bg-gray-100"
+                        defaultValue={user?.email}
                      />
                   </div>
 
                   <div className="md:col-span-2">
-                     <label className="label">Short Description</label>
+                     <label className="label">Short Description *</label>
                      <textarea
+                        required
                         className="textarea textarea-bordered cusInput w-full"
                         rows={3}
                      ></textarea>
