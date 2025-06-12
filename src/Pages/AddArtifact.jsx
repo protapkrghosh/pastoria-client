@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../Context/AuthProvider";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const AddArtifact = () => {
    const { user } = useContext(AuthContext);
@@ -9,7 +11,19 @@ const AddArtifact = () => {
       const form = e.target;
       const formData = new FormData(form);
       const artifactInfo = Object.fromEntries(formData.entries());
-      console.log(artifactInfo);
+      artifactInfo.likeCount = 0;
+
+      axios
+         .post(`${import.meta.env.VITE_URL}/artifacts`, artifactInfo)
+         .then((result) => {
+            if (result.data.insertedId) {
+               toast.success('Artifact Added Successfully')
+               form.reset();
+            }
+         })
+         .catch((error) => {
+            toast.error(error.message);
+         });
    };
 
    return (
@@ -34,7 +48,7 @@ const AddArtifact = () => {
                      <label className="label">Artifact Name *</label>
                      <input
                         required
-                        name="artifact_name"
+                        name="artifactName"
                         className="input input-bordered cusInput w-full"
                         placeholder="Rosetta Stone"
                      />
@@ -44,7 +58,7 @@ const AddArtifact = () => {
                      <label className="label">Artifact Image (URL) *</label>
                      <input
                         required
-                        name="image"
+                        name="imageURL"
                         className="input input-bordered cusInput w-full"
                         placeholder="https://"
                      />
@@ -53,11 +67,12 @@ const AddArtifact = () => {
                   <div>
                      <label className="label">Artifact Type *</label>
                      <select
-                        className="select select-bordered cusInput w-full"
                         required
+                        name="artifactType"
+                        className="select select-bordered cusInput w-full"
                      >
                         <option value="" disabled>
-                           Selected Type
+                           Selected One
                         </option>
                         <option>Tools</option>
                         <option>Weapons</option>
@@ -81,7 +96,7 @@ const AddArtifact = () => {
                      <label className="label">Created At *</label>
                      <input
                         required
-                        name="create_at"
+                        name="createAt"
                         className="input input-bordered cusInput w-full"
                         placeholder="100 BC"
                      />
@@ -91,7 +106,7 @@ const AddArtifact = () => {
                      <label className="label">Discovered At *</label>
                      <input
                         required
-                        name="discovered_at"
+                        name="discoveredAt"
                         className="input input-bordered cusInput w-full"
                         placeholder="1799"
                      />
@@ -101,7 +116,7 @@ const AddArtifact = () => {
                      <label className="label">Discovered By *</label>
                      <input
                         required
-                        name="discovered_by"
+                        name="discoveredBy"
                         className="input input-bordered cusInput w-full"
                         placeholder="Pierre-François Bouchard"
                      />
@@ -111,7 +126,7 @@ const AddArtifact = () => {
                      <label className="label">Present Location *</label>
                      <input
                         required
-                        name="present_location"
+                        name="presentLocation"
                         className="input input-bordered cusInput w-full"
                         placeholder="British Museum, London"
                      />
@@ -121,7 +136,7 @@ const AddArtifact = () => {
                      <label className="label">Your Name</label>
                      <input
                         readOnly
-                        name="user_name"
+                        name="userName"
                         className="input input-bordered cusInput w-full cursor-no-drop bg-gray-100"
                         defaultValue={user?.displayName}
                      />
@@ -131,7 +146,7 @@ const AddArtifact = () => {
                      <label className="label">Your Email</label>
                      <input
                         readOnly
-                        name="user_email"
+                        name="userEmail"
                         className="input input-bordered cusInput w-full cursor-no-drop bg-gray-100"
                         defaultValue={user?.email}
                      />
