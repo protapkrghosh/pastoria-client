@@ -17,7 +17,7 @@ import { GiPaperArrow } from "react-icons/gi";
 const Footer = () => {
    return (
       <div className="bg-black text-base-300">
-         <footer className="container mx-auto px-2 md:px-6 lg:px-12 md:mt-96 py-20">
+         <footer className="container mx-auto px-2 md:px-6 lg:px-12 py-20">
             <div className="grid md:grid-cols-3 gap-10">
                {/* Left Column - Logo Area */}
                <div>

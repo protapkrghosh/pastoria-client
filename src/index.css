@@ -49,3 +49,7 @@ body {
 .btnHover {
    @apply hover:bg-black hover:text-white duration-500 px-6 shadow-none border-none
 }
+
+.label {
+   @apply text-[14px] mb-1
+}

@@ -5,6 +5,7 @@ import PageNotFound from "../components/PageNotFound";
 import SignIn from "../Pages/SignIn";
 import SignUp from "../Pages/SignUp";
 import { ThreeCircles } from "react-loader-spinner";
+import AddArtifact from "../Pages/AddArtifact";
 
 export const router = createBrowserRouter([
    {
@@ -24,9 +25,22 @@ export const router = createBrowserRouter([
          </div>
       ),
       children: [
-         { index: true, Component: Home },
-         { path: "signin", Component: SignIn },
-         { path: "signup", Component: SignUp },
+         {
+            index: true,
+            Component: Home,
+         },
+         {
+            path: "signin",
+            Component: SignIn,
+         },
+         {
+            path: "signup",
+            Component: SignUp,
+         },
+         {
+            path: "add-artifact",
+            element: <AddArtifact />,
+         },
       ],
    },
    {

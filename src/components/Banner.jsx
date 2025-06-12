@@ -96,7 +96,7 @@ const Banner = () => {
          </div>
 
          {/* Information Card */}
-         <div className="flex justify-center">
+         <div className="flex justify-center md:mb-96">
             <div className="md:absolute -bottom-72 z-40 w-full md:w-11/12 shadow-lg">
                <div className="grid grid-cols-1 md:grid-cols-3 bg-base-200 text-black">
                   {/* Open Hours */}

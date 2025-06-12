@@ -22,24 +22,24 @@ const Navbar = () => {
       </NavLink>,
 
       <NavLink
-         to={"/add-artifacts"}
-         key={"add-artifacts"}
+         to={"/add-artifact"}
+         key={"add-artifact"}
          className={"navLinks"}
       >
          Add Artifacts
       </NavLink>,
 
       <NavLink
-         to={"/add-artifacts"}
-         key={"add-artifacts"}
+         to={"/my-artifacts"}
+         key={"my-artifacts"}
          className={"navLinks"}
       >
          My Artifacts
       </NavLink>,
 
       <NavLink
-         to={"/add-artifacts"}
-         key={"add-artifacts"}
+         to={"/liked-artifacts"}
+         key={"liked-artifacts"}
          className={"navLinks"}
       >
          Liked Artifacts
