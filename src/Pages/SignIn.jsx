@@ -3,13 +3,15 @@ import { Helmet } from "react-helmet-async";
 import { ImEye, ImEyeBlocked } from "react-icons/im";
 import { FaGithub } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
 import toast from "react-hot-toast";
 
 const SignIn = () => {
    const { signInUser, googleSignIn, gitHubSignIn } = useContext(AuthContext);
    const [showPassword, setShowPassword] = useState(false);
+   const navigate = useNavigate();
+   const location = useLocation();
 
    const handleSignUp = (e) => {
       e.preventDefault();
@@ -21,6 +23,7 @@ const SignIn = () => {
          .then((result) => {
             toast.success("Sign In Successfully");
             form.reset();
+            navigate(location?.state || "/signin");
          })
          .catch((error) => {
             toast.error(error.code);
@@ -29,7 +32,10 @@ const SignIn = () => {
 
    const handleGoogleSignIn = () => {
       googleSignIn()
-         .then((result) => toast.success("Sign In Successfully"))
+         .then((result) => {
+            toast.success("Sign In Successfully");
+            navigate(location?.state || "/signin");
+         })
          .catch((error) => {
             toast.error(error.code);
          });
@@ -37,7 +43,10 @@ const SignIn = () => {
 
    const handleGitHubSignIn = () => {
       gitHubSignIn()
-         .then((result) => toast.success("Sign In Successfully"))
+         .then((result) => {
+            toast.success("Sign In Successfully");
+            navigate(location?.state || "/signin");
+         })
          .catch((error) => {
             toast.error(error.code);
          });
