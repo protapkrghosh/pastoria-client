@@ -6,7 +6,7 @@ const AllArtifacts = () => {
    console.log(artifactsData.data);
 
    return (
-      <div className="py-8 px-4 max-w-7xl mx-auto">
+      <div className="container mx-auto px-2 md:px-6 lg:px-12 py-16">
          <h1 className="text-3xl font-bold text-secondary text-center mb-6">
             All Historical Artifacts
          </h1>

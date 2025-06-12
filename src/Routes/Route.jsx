@@ -4,7 +4,6 @@ import Home from "../Pages/Home";
 import PageNotFound from "../components/PageNotFound";
 import SignIn from "../Pages/SignIn";
 import SignUp from "../Pages/SignUp";
-import { ThreeCircles } from "react-loader-spinner";
 import AddArtifact from "../Pages/AddArtifact";
 import PrivateRoute from "./PrivateRoute";
 import AllArtifacts from "../Pages/AllArtifacts";
@@ -16,14 +15,9 @@ export const router = createBrowserRouter([
       Component: Root,
       hydrateFallbackElement: (
          <div className="flex justify-center items-center min-h-[50dvh]">
-            <ThreeCircles
-               visible={true}
-               height="100"
-               width="100"
-               color="#e2b13c"
-               ariaLabel="three-circles-loading"
-               wrapperStyle={{}}
-               wrapperClass=""
+            <img
+               src="https://bookly-theme.myshopify.com/cdn/shop/files/icons8-literature_1.gif?v=1679027144&width=1920"
+               alt=""
             />
          </div>
       ),

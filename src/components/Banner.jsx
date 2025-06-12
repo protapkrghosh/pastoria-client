@@ -8,7 +8,6 @@ import slider2 from "../assets/gallery1.jpg";
 import slider3 from "../assets/gallery3.jpg";
 import slider4 from "../assets/gallery4.jpg";
 import slider5 from "../assets/gallery2.jpg";
-import { ThreeCircles } from "react-loader-spinner";
 import { AuthContext } from "../Context/AuthProvider";
 import locationImg from "../assets/location.png";
 
@@ -29,14 +28,9 @@ const Banner = () => {
    if (loading) {
       return (
          <div className="flex justify-center items-center min-h-dvh">
-            <ThreeCircles
-               visible={true}
-               height="100"
-               width="100"
-               color="#e2b13c"
-               ariaLabel="three-circles-loading"
-               wrapperStyle={{}}
-               wrapperClass=""
+            <img
+               src="https://bookly-theme.myshopify.com/cdn/shop/files/icons8-literature_1.gif?v=1679027144&width=1920"
+               alt=""
             />
          </div>
       );
