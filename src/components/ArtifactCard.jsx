@@ -1,4 +1,5 @@
 import { MdOutlineZoomOutMap } from "react-icons/md";
+import { Link } from "react-router";
 
 const ArtifactCard = ({ artifact }) => {
    const {
@@ -49,9 +50,12 @@ const ArtifactCard = ({ artifact }) => {
                {description || "No description available for this artifact."}
             </p>
 
-            <a href={`/details/${_id}`} className="text-sm text-black hover:underline">
+            <Link
+               to={`/artifact/${_id}`}
+               className="text-sm text-black hover:underline"
+            >
                Learn More
-            </a>
+            </Link>
          </div>
       </div>
    );

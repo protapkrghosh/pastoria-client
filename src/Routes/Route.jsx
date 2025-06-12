@@ -50,12 +50,13 @@ export const router = createBrowserRouter([
             loader: () => axios.get(`${import.meta.env.VITE_URL}/artifacts`),
          },
          {
-            path: "details/:id",
+            path: "artifact/:id",
             element: (
                <PrivateRoute>
                   <ArtifactDetails />
                </PrivateRoute>
             ),
+            loader: () => axios.get(`${import.meta.env.VITE_URL}/artifacts`),
          },
       ],
    },
