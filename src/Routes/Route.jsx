@@ -8,6 +8,7 @@ import AddArtifact from "../Pages/AddArtifact";
 import PrivateRoute from "./PrivateRoute";
 import AllArtifacts from "../Pages/AllArtifacts";
 import axios from "axios";
+import ArtifactDetails from "../Pages/ArtifactDetails";
 
 export const router = createBrowserRouter([
    {
@@ -46,6 +47,14 @@ export const router = createBrowserRouter([
             path: "all-artifacts",
             Component: AllArtifacts,
             loader: () => axios.get(`${import.meta.env.VITE_URL}/artifacts`),
+         },
+         {
+            path: "details/:id",
+            element: (
+               <PrivateRoute>
+                  <ArtifactDetails />
+               </PrivateRoute>
+            ),
          },
       ],
    },

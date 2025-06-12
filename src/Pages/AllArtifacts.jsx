@@ -3,11 +3,10 @@ import ArtifactCard from "../components/ArtifactCard";
 
 const AllArtifacts = () => {
    const artifactsData = useLoaderData();
-   console.log(artifactsData.data);
 
    return (
-      <div className="container mx-auto px-2 md:px-6 lg:px-12 py-16">
-         <h1 className="text-3xl font-bold text-secondary text-center mb-6">
+      <div className="container mx-auto px-2 md:px-6 lg:px-12 py-16 bg-base-200">
+         <h1 className="rancho text-5xl font-bold text-secondary text-center tracking-wider mb-10">
             All Historical Artifacts
          </h1>
 
