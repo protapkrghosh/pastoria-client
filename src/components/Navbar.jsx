@@ -28,6 +28,22 @@ const Navbar = () => {
       >
          Add Artifacts
       </NavLink>,
+
+      <NavLink
+         to={"/add-artifacts"}
+         key={"add-artifacts"}
+         className={"navLinks"}
+      >
+         My Artifacts
+      </NavLink>,
+
+      <NavLink
+         to={"/add-artifacts"}
+         key={"add-artifacts"}
+         className={"navLinks"}
+      >
+         Liked Artifacts
+      </NavLink>,
    ];
 
    const handleSignOut = () => {

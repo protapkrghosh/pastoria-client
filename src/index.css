@@ -35,7 +35,7 @@ body {
 }
 
 .navLinks {
-   @apply mx-4 text-[16px] font-medium border-primary hover:border-b-2;
+   @apply mx-4 text-[15px] font-medium border-primary hover:border-b-2;
 }
 
 .cusInput {
