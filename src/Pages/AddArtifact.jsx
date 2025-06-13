@@ -11,7 +11,7 @@ const AddArtifact = () => {
       const form = e.target;
       const formData = new FormData(form);
       const artifactInfo = Object.fromEntries(formData.entries());
-      artifactInfo.likeCount = 0;
+      artifactInfo.likeCount = [];
 
       axios
          .post(`${import.meta.env.VITE_URL}/artifacts`, artifactInfo)

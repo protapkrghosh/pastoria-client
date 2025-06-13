@@ -71,7 +71,7 @@ const ArtifactDetails = () => {
                      )}
 
                      <div className="text-slate-600">
-                        <span className="font-bold">{likeCount}</span>{" "}
+                        <span className="font-bold">{likeCount.length}</span>{" "}
                         <span className="font-medium">likes</span>
                      </div>
                   </div>
