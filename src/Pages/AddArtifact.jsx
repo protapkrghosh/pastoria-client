@@ -90,7 +90,7 @@ const AddArtifact = () => {
                         required
                         name="context"
                         className="input input-bordered cusInput w-full"
-                        placeholder="Used during Roman Empire..."
+                        placeholder="Used during Roman Empire"
                      />
                   </div>
 
@@ -120,7 +120,7 @@ const AddArtifact = () => {
                         required
                         name="discoveredBy"
                         className="input input-bordered cusInput w-full"
-                        placeholder="Pierre-François Bouchard"
+                        placeholder="Pierre-Francois Bouchard"
                      />
                   </div>
 

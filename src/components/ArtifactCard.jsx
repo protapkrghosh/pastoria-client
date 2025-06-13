@@ -32,7 +32,7 @@ const ArtifactCard = ({ artifact }) => {
             <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-65 transition-opacity duration-300 flex items-center justify-center h-[230px]">
                <MdOutlineZoomOutMap
                   size={70}
-                  className="text-white opacity-25"
+                  className="text-white opacity-30"
                />
             </div>
 
