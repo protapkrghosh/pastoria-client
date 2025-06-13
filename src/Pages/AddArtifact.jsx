@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../Context/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const AddArtifact = () => {
    const { user } = useContext(AuthContext);
@@ -17,7 +18,7 @@ const AddArtifact = () => {
          .post(`${import.meta.env.VITE_URL}/artifacts`, artifactInfo)
          .then((result) => {
             if (result.data.insertedId) {
-               toast.success('Artifact Added Successfully')
+               toast.success("Artifact Added Successfully");
                form.reset();
             }
          })
@@ -28,6 +29,10 @@ const AddArtifact = () => {
 
    return (
       <div>
+         <Helmet>
+            <title>Add Artifact — Pastoria</title>
+         </Helmet>
+
          <div className="bg-base-200 container mx-auto px-3 sm:px-10 md:px-6 lg:px-12 pt-16 pb-24">
             <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg px-3 py-8 md:px-10 md:py-12 border border-gray-200">
                <div className="text-secondary text-center mb-12">
@@ -139,7 +144,7 @@ const AddArtifact = () => {
                      <input
                         readOnly
                         name="userName"
-                        className="input input-bordered cusInput w-full cursor-no-drop bg-gray-100"
+                        className="input input-bordered cusInput w-full cursor-no-drop bg-gray-50"
                         defaultValue={user?.displayName}
                      />
                   </div>
@@ -149,7 +154,7 @@ const AddArtifact = () => {
                      <input
                         readOnly
                         name="userEmail"
-                        className="input input-bordered cusInput w-full cursor-no-drop bg-gray-100"
+                        className="input input-bordered cusInput w-full cursor-no-drop bg-gray-50"
                         defaultValue={user?.email}
                      />
                   </div>

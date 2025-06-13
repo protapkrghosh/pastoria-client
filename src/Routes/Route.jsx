@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import AllArtifacts from "../Pages/AllArtifacts";
 import axios from "axios";
 import ArtifactDetails from "../Pages/ArtifactDetails";
+import MyArtifacts from "../Pages/MyArtifacts";
 
 export const router = createBrowserRouter([
    {
@@ -54,6 +55,15 @@ export const router = createBrowserRouter([
             element: (
                <PrivateRoute>
                   <ArtifactDetails />
+               </PrivateRoute>
+            ),
+            loader: () => axios.get(`${import.meta.env.VITE_URL}/artifacts`),
+         },
+         {
+            path: "my-artifacts",
+            element: (
+               <PrivateRoute>
+                  <MyArtifacts />
                </PrivateRoute>
             ),
             loader: () => axios.get(`${import.meta.env.VITE_URL}/artifacts`),

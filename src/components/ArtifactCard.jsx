@@ -59,7 +59,7 @@ const ArtifactCard = ({ artifact }) => {
 
             <Link
                to={`/artifact/${_id}`}
-               className="text-sm text-black hover:underline"
+               className="text-sm text-primary hover:underline"
             >
                Learn More
             </Link>
