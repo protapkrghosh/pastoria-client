@@ -1,5 +1,6 @@
 import { MdOutlineZoomOutMap } from "react-icons/md";
 import { Link } from "react-router";
+import image from "../assets/placeholder.jpg";
 
 const ArtifactCard = ({ artifact }) => {
    const {
@@ -11,14 +12,19 @@ const ArtifactCard = ({ artifact }) => {
       discoveredBy,
       description,
    } = artifact;
+   const placeholderImage = imageURL || image;
 
    return (
       <div className="bg-white rounded-none overflow-hidden mx-auto border-8 border-transparent hover:border-[#77777725] w-full duration-500 group">
          {/* Image Section */}
          <div className="relative">
             <img
-               src={imageURL}
+               src={placeholderImage}
                alt={artifactName}
+               onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = image;
+               }}
                className="w-full h-56 object-cover group-hover:scale-105 duration-500"
             />
 

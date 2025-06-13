@@ -3,12 +3,14 @@ import { Link, useLoaderData, useParams } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
 import { BiLike } from "react-icons/bi";
 import { Helmet } from "react-helmet-async";
+import image from "../assets/placeholder.jpg";
 
 const ArtifactDetails = () => {
    const { user } = useContext(AuthContext);
    const { id } = useParams();
    const data = useLoaderData();
    const artifact = data.data.find((art) => art._id === id);
+   const placeholderImage = artifact?.imageURL || image;
    const [likeCount, setLikeCount] = useState(artifact?.likeCount || 0);
 
    return (
@@ -23,9 +25,13 @@ const ArtifactDetails = () => {
                <div className="md:col-span-2">
                   <div className="overflow-hidden rounded-lg shadow-md mb-8">
                      <img
-                        src={artifact?.imageURL}
+                        src={placeholderImage}
                         alt={artifact?.artifactName}
-                        className="w-full h-[60vh] object-cover rounded-lg"
+                        onError={(e) => {
+                           e.target.onerror = null;
+                           e.target.src = image;
+                        }}
+                        className="w-full h-[65vh] object-cover rounded-lg"
                      />
                   </div>
 
