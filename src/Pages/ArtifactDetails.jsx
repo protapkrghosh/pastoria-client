@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useLoaderData, useParams } from "react-router";
+import { Link, useLoaderData, useParams } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
 import { BiLike } from "react-icons/bi";
 import { Helmet } from "react-helmet-async";
@@ -17,43 +17,42 @@ const ArtifactDetails = () => {
             <title>Details — Pastoria</title>
          </Helmet>
 
-         <div className="container mx-auto px-2 md:px-6 lg:px-12 bg-base-200">
-            <div className="bg-white shadow rounded-lg max-w-3xl mx-auto overflow-hidden py-4 md:pt-6 md:pb-10">
-               {/* Top Row */}
-               <div className="flex flex-col-reverse md:flex-row justify-between items-start px-4 md:px-6 pb-4">
-                  <h2 className="text-[22px] md:text-2xl font-bold text-black yesevaOne tracking-wider mb-1 mt-5 md:mt-0">
+         <div className="container mx-auto px-2 md:px-6 lg:px-12 bg-base-200 py-16">
+            <div className="bg-white shadow rounded-lg max-w-3xl mx-auto overflow-hidden">
+               <div>
+                  <img
+                     src={artifact?.imageURL}
+                     alt="Image"
+                     className="w-full h-[70dvh] object-cover"
+                  />
+               </div>
+
+               {/* Description Section */}
+               <div className="px-5 md:px-6">
+                  <div className="flex justify-between pt-10">
+                     <div className="text-sm text-secondary font-medium tracking-wide uppercase">
+                        {artifact?.artifactType} &nbsp;&nbsp;|&nbsp;&nbsp; By{" "}
+                        {artifact?.discoveredBy}
+                     </div>
+
+                     <div className="text-sm text-end">
+                        <p className="text-slate-500">Posted By</p>
+                        <h4 className="text-slate-600 font-medium capitalize">
+                           {artifact?.userName}
+                        </h4>
+                     </div>
+                  </div>
+
+                  <h2 className="ptSerif text-[22px] md:text-3xl font-bold text-black yesevaOne tracking-wider mt-4 mb-6">
                      {artifact?.artifactName}
                   </h2>
 
-                  <div className="md:text-end">
-                     <p className="text-slate-400">Posted By</p>
-                     <h4 className="text-slate-600 font-semibold capitalize">
-                        {artifact?.userName}
-                     </h4>
-                     <p className="text-sm text-slate-500">
-                        {artifact?.userEmail}
-                     </p>
-                  </div>
-               </div>
+                  <p className="text-secondary leading-8">
+                     {artifact?.description}
+                  </p>
 
-               {/* Divider */}
-               <div className="border-t border-gray-200" />
-
-               {/* Description Section */}
-               <div className="px-5 md:px-6 py-4">
-                  <h3 className="text-lg font-semibold text-black mb-2">
-                     Description
-                  </h3>
-
-                  <Fade delay={1e2} cascade damping={1e-1}>
-                     <p className="text-accent leading-relaxed">
-                        {artifact?.description}
-                     </p>
-                  </Fade>
-
-                  <div className="mt-8">
-                     <h5 className="font-semibold mb-2">Reaction:</h5>
-
+                  {/* Reaction Area */}
+                  <div className="my-6">
                      <div className="flex items-center gap-3">
                         {user?.email === artifact?.uerEmail ? (
                            <BiLike
@@ -80,6 +79,7 @@ const ArtifactDetails = () => {
                         </div>
                      </div>
                   </div>
+
                </div>
 
                {/* Divider */}
