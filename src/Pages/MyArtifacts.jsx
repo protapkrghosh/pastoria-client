@@ -7,6 +7,8 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import axios from "axios";
 import Modal from "../components/Modal";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const MyArtifacts = () => {
    const { user } = useContext(AuthContext);
@@ -25,6 +27,39 @@ const MyArtifacts = () => {
    const artifacts = allArtifacts.filter(
       (art) => art?.userEmail === user?.email
    );
+
+   const handleDeleteArtifact = (id) => {
+      // Swal alert for deleted list
+      Swal.fire({
+         title: "Are you sure?",
+         text: "You won't be able to revert this!",
+         icon: "warning",
+         showCancelButton: true,
+         confirmButtonColor: "#3085d6",
+         cancelButtonColor: "#d33",
+         confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+         if (result.isConfirmed) {
+            // Listing deleted
+            axios
+               .delete(`${import.meta.env.VITE_URL}/artifact/${id}`)
+               .then((result) => {
+                  if (result.data.deletedCount) {
+                     toast.success("Your Artifact has been deleted");
+                  }
+                  
+                  const updatedArtifacts = allArtifacts.filter(
+                     (art) => art._id !== id
+                  );
+                  setAllArtifacts(updatedArtifacts);
+               })
+               .catch((error) => {
+                  console.log(error);
+                  toast.error(error.message);
+               });
+         }
+      });
+   };
 
    return (
       <div>
@@ -88,7 +123,12 @@ const MyArtifacts = () => {
                                           <FaRegEdit size={20} />
                                        </button>
 
-                                       <button className="btn btn-outline btn-error p-2 hover:text-white btn-sm">
+                                       <button
+                                          onClick={() =>
+                                             handleDeleteArtifact(art._id)
+                                          }
+                                          className="btn btn-outline btn-error p-2 hover:text-white btn-sm"
+                                       >
                                           <RiDeleteBin5Fill size={20} />
                                        </button>
                                     </td>
