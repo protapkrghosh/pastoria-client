@@ -1,9 +1,10 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
-import { BiLike } from "react-icons/bi";
+import { BiLike, BiSolidLike } from "react-icons/bi";
 import { Helmet } from "react-helmet-async";
 import image from "../assets/placeholder.jpg";
+import axios from "axios";
 
 const ArtifactDetails = () => {
    const { user } = useContext(AuthContext);
@@ -11,7 +12,29 @@ const ArtifactDetails = () => {
    const data = useLoaderData();
    const artifact = data.data.find((art) => art._id === id);
    const placeholderImage = artifact?.imageURL || image;
-   const [likeCount, setLikeCount] = useState(artifact?.likeCount || 0);
+   const [likeCount, setLikeCount] = useState(artifact?.likedBy.length || 0);
+   const [liked, setLiked] = useState(artifact?.likedBy.includes(user?.email));
+
+   useEffect(() => {
+      setLiked(artifact?.likedBy.includes(user?.email));
+   }, [artifact?.likedBy, user]);
+
+   // Handle like/dislike
+   const handleLike = () => {
+      // handle like toggle API fetch call
+      axios
+         .patch(`${import.meta.env.VITE_URL}/like/${id}`, {
+            email: user?.email,
+         })
+         .then((data) => {
+            const isLiked = data?.data?.liked;
+            setLiked(isLiked);
+            setLikeCount((prev) => (isLiked ? prev + 1 : prev - 1));
+         })
+         .catch((error) => {
+            console.log(error);
+         });
+   };
 
    return (
       <div>
@@ -55,23 +78,26 @@ const ArtifactDetails = () => {
                      {artifact?.description}
                   </p>
 
-                  {/* Likes */}
+                  {/* Like/dislike button */}
                   <div className="flex items-center gap-2">
                      {user?.email === artifact?.userEmail ? (
                         <BiLike
                            size={24}
-                           className="text-primary cursor-not-allowed"
+                           title="You can't like your own post"
+                           className="text-primary cursor-not-allowed opacity-60"
                         />
                      ) : (
-                        <BiLike
-                           onClick={() => setLikeCount(likeCount + 1)}
-                           size={24}
-                           className="text-primary cursor-pointer hover:scale-110 transition"
-                        />
+                        <div className="text-primary cursor-pointer hover:scale-110 transition">
+                           {liked ? (
+                              <BiSolidLike onClick={handleLike} size={26} />
+                           ) : (
+                              <BiLike onClick={handleLike} size={26} />
+                           )}
+                        </div>
                      )}
 
                      <div className="text-slate-600">
-                        <span className="font-bold">{likeCount.length}</span>{" "}
+                        <span className="font-bold">{likeCount}</span>{" "}
                         <span className="font-medium">likes</span>
                      </div>
                   </div>
