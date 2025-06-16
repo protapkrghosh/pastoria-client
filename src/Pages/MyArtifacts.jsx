@@ -1,15 +1,28 @@
-import React, { useContext } from "react";
-import { Link, useLoaderData } from "react-router";
+import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { HiOutlineLightBulb } from "react-icons/hi";
+import axios from "axios";
+import Modal from "../components/Modal";
 
 const MyArtifacts = () => {
-   const data = useLoaderData();
    const { user } = useContext(AuthContext);
-   const artifacts = data.data.filter(
+   const [allArtifacts, setAllArtifacts] = useState([]);
+   const [artifactId, setArtifactId] = useState(null);
+
+   useEffect(() => {
+      axios
+         .get(`${import.meta.env.VITE_URL}/artifacts`)
+         .then((result) => {
+            setAllArtifacts(result.data);
+         })
+         .catch((error) => console.log(error));
+   }, []);
+
+   const artifacts = allArtifacts.filter(
       (art) => art?.userEmail === user?.email
    );
 
@@ -38,34 +51,36 @@ const MyArtifacts = () => {
                               </tr>
                            </thead>
                            <tbody>
-                              {artifacts.map((list) => (
+                              {artifacts.map((art) => (
                                  <tr
-                                    key={list._id}
+                                    key={art._id}
                                     className="hover:bg-gray-100"
                                  >
                                     <td className="ptSerif text-base tracking-wide font-semibold md:pl-12">
-                                       {list?.artifactName.length > 60
-                                          ? list?.artifactName.slice(0, 50) +
+                                       {art?.artifactName.length > 60
+                                          ? art?.artifactName.slice(0, 50) +
                                             "..."
-                                          : list?.artifactName}
+                                          : art?.artifactName}
                                     </td>
 
                                     <td className="capitalize">
-                                       {list?.presentLocation}
+                                       {art?.presentLocation}
                                     </td>
                                     <td>
-                                       {list?.discoveredBy.length > 30
-                                          ? list?.discoveredBy.slice(0, 30) +
+                                       {art?.discoveredBy.length > 30
+                                          ? art?.discoveredBy.slice(0, 30) +
                                             "..."
-                                          : list?.discoveredBy}
+                                          : art?.discoveredBy}
                                     </td>
 
                                     <td className="flex space-x-3">
                                        <button
                                           onClick={() => {
-                                             setListId(list._id);
+                                             setArtifactId(art._id);
                                              document
-                                                .getElementById("list_modal")
+                                                .getElementById(
+                                                   "artifact_modal"
+                                                )
                                                 .showModal();
                                           }}
                                           className="btn btn-outline btn-primary p-2 hover:text-white btn-sm"
@@ -73,12 +88,7 @@ const MyArtifacts = () => {
                                           <FaRegEdit size={20} />
                                        </button>
 
-                                       <button
-                                          onClick={() =>
-                                             handleDeleteListing(list._id)
-                                          }
-                                          className="btn btn-outline btn-error p-2 hover:text-white btn-sm"
-                                       >
+                                       <button className="btn btn-outline btn-error p-2 hover:text-white btn-sm">
                                           <RiDeleteBin5Fill size={20} />
                                        </button>
                                     </td>
@@ -117,11 +127,11 @@ const MyArtifacts = () => {
             </div>
 
             {/* Modal */}
-            {/* <Modal
-               listId={listId}
-               myLists={myLists}
-               setMyListing={setMyListing}
-            /> */}
+            <Modal
+               artifactId={artifactId}
+               MyArtifacts={allArtifacts}
+               setMyArtifacts={setAllArtifacts}
+            />
          </div>
       </div>
    );

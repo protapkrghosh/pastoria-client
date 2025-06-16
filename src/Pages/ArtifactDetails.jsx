@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
 import { BiLike } from "react-icons/bi";

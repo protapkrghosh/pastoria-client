@@ -66,7 +66,6 @@ export const router = createBrowserRouter([
                   <MyArtifacts />
                </PrivateRoute>
             ),
-            loader: () => axios.get(`${import.meta.env.VITE_URL}/artifacts`),
          },
       ],
    },
