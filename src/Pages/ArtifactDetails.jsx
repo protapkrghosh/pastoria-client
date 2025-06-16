@@ -12,12 +12,12 @@ const ArtifactDetails = () => {
    const data = useLoaderData();
    const artifact = data.data.find((art) => art._id === id);
    const placeholderImage = artifact?.imageURL || image;
-   const [likeCount, setLikeCount] = useState(artifact?.likedBy.length || 0);
+   const [likeCount, setLikeCount] = useState(artifact?.likedBy.length);
    const [liked, setLiked] = useState(artifact?.likedBy.includes(user?.email));
 
    useEffect(() => {
       setLiked(artifact?.likedBy.includes(user?.email));
-   }, [artifact?.likedBy, user]);
+   }, [artifact, artifact?.likedBy, user]);
 
    // Handle like/dislike
    const handleLike = () => {
@@ -89,9 +89,17 @@ const ArtifactDetails = () => {
                      ) : (
                         <div className="text-primary cursor-pointer hover:scale-110 transition">
                            {liked ? (
-                              <BiSolidLike onClick={handleLike} size={26} />
+                              <BiSolidLike
+                                 onClick={handleLike}
+                                 size={26}
+                                 title="Liked"
+                              />
                            ) : (
-                              <BiLike onClick={handleLike} size={26} />
+                              <BiLike
+                                 onClick={handleLike}
+                                 size={26}
+                                 title="Like"
+                              />
                            )}
                         </div>
                      )}
