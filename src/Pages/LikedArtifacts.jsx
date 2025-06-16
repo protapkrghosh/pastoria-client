@@ -15,7 +15,7 @@ const LikedArtifacts = () => {
    );
 
    return (
-      <div className="bg-base-200 py-14">
+      <div className="bg-base-200 pt-14 pb-20">
          <Helmet>
             <title>Liked Artifacts — Pastoria</title>
          </Helmet>
@@ -26,14 +26,25 @@ const LikedArtifacts = () => {
             </h2>
 
             {likedArtifacts.length === 0 ? (
-               <div className="flex flex-col items-center justify-center text-center mt-12">
-                  <FaRegSadTear className="text-5xl text-primary mb-4" />
-                  <h3 className="text-2xl font-semibold text-gray-700">
+               <div className="max-w-4xl mx-auto bg-[#fff] border-8 border-gray-200 p-5 md:px-10 md:py-14 rounded-xl text-center">
+                  <div className="bg-[#e2b03c21] text-primary mx-auto w-fit p-4 rounded-full">
+                     <FaRegSadTear size={33} />
+                  </div>
+
+                  <h2 className="text-2xl text-gray-700 font-semibold my-5">
                      No Liked Artifacts Found
-                  </h3>
-                  <p className="text-gray-500 mt-2">
+                  </h2>
+
+                  <p className="text-secondary text-sm md:w-[60%] lg:w-[55%] mx-auto">
                      You haven’t expressed liked for history yet!
                   </p>
+
+                  <Link
+                     to={"/all-artifacts"}
+                     className="btn btn-primary btnHover w-full md:w-auto text-white px-10 mt-6 rounded-none"
+                  >
+                     More Artifact
+                  </Link>
                </div>
             ) : (
                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -58,7 +69,7 @@ const LikedArtifacts = () => {
 
                               <Link
                                  to={`/artifact/${artifact._id}`}
-                                 className="bg-primary/80 p-2 mt-4"
+                                 className="bg-primary/80 p-3 mt-4"
                               >
                                  <FiLink size={17} className="text-white" />
                               </Link>
@@ -72,7 +83,7 @@ const LikedArtifacts = () => {
                                  <span className="font-semibold">
                                     {artifact.likedBy?.length || 0}
                                  </span>{" "}
-                                 Likes
+                                 Likes &nbsp; |
                               </div>
 
                               <div>{artifact?.presentLocation}</div>
