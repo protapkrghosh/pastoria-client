@@ -51,10 +51,10 @@ const LikedArtifacts = () => {
                   {likedArtifacts.map((artifact) => (
                      <div
                         key={artifact._id}
-                        className="bg-white/70 hover:shadow-md border border-accent rounded-md overflow-hidden duration-300"
+                        className="bg-white/70 hover:shadow-md border border-accent rounded-md overflow-hidden duration-500 group"
                      >
                         {/* Image Area with Hover */}
-                        <div className="relative group">
+                        <div className="relative">
                            <img
                               src={artifact?.imageURL}
                               alt={artifact?.artifactName}
