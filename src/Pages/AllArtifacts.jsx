@@ -1,9 +1,20 @@
 import { useLoaderData } from "react-router";
 import ArtifactCard from "../components/ArtifactCard";
 import { Helmet } from "react-helmet-async";
+import { useTypewriter, Cursor } from "react-simple-typewriter";
+import { useState } from "react";
 
 const AllArtifacts = () => {
    const artifactsData = useLoaderData();
+   const [text] = useTypewriter({
+      words: ["Ancient Wonders", "Echoes of History", "Timeless Treasures"],
+      loop: true,
+      typeSpeed: 80,
+      deleteSpeed: 50,
+      delaySpeed: 1000,
+   });
+
+   const [searchInput, setSearchInput] = useState("");
 
    return (
       <div>
@@ -26,7 +37,7 @@ const AllArtifacts = () => {
             </div>
 
             {/* Search */}
-            <div className="my-10 w-3/5 mx-auto">
+            <div className="my-10 md:w-3/5 mx-auto">
                <label className="input cusInput">
                   <svg
                      className="h-[1em] opacity-50"
@@ -44,7 +55,14 @@ const AllArtifacts = () => {
                         <path d="m21 21-4.3-4.3"></path>
                      </g>
                   </svg>
-                  <input type="search" required placeholder="Search Artifact" />
+
+                  <input
+                     type="search"
+                     value={searchInput}
+                     onChange={(e) => setSearchInput(e.target.value)}
+                     placeholder={searchInput ? "" : `${text} |`}
+                     className="bg-transparent"
+                  />
                </label>
             </div>
 
