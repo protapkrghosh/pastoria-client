@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
@@ -45,6 +46,21 @@ const AuthProvider = ({ children }) => {
       const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
          setUser(currentUser);
          setLoading(false);
+
+         // API for JWT
+         if (currentUser?.email) {
+            const userData = { email: currentUser.email };
+            axios
+               .post(`${import.meta.env.VITE_URL}/jwt`, userData, {
+                  withCredentials: true,
+               })
+               .then((res) => {
+                  // console.log(res.data);
+               })
+               .catch((error) => {
+                  // console.log(error);
+               });
+         }
       });
 
       return () => {

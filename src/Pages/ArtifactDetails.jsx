@@ -10,13 +10,17 @@ const ArtifactDetails = () => {
    const { user } = useContext(AuthContext);
    const { id } = useParams();
    const data = useLoaderData();
-   const artifact = data.data.find((art) => art._id === id);
+   const artifact = data.data.find((art) => art?._id === id);
    const placeholderImage = artifact?.imageURL || image;
-   const [likeCount, setLikeCount] = useState(artifact?.likedBy.length);
-   const [liked, setLiked] = useState(artifact?.likedBy.includes(user?.email));
+   const [likeCount, setLikeCount] = useState(artifact?.likedBy?.length);
+   const [liked, setLiked] = useState(
+      Array.isArray(artifact?.likedBy) && artifact.likedBy.includes(user?.email)
+   );
 
    useEffect(() => {
-      setLiked(artifact?.likedBy.includes(user?.email));
+      if (Array.isArray(artifact?.likedBy)) {
+         setLiked(artifact.likedBy.includes(user?.email));
+      }
    }, [artifact, artifact?.likedBy, user]);
 
    // Handle like/dislike

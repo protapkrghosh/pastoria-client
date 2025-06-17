@@ -50,7 +50,7 @@ const ArtifactCard = ({ artifact }) => {
          {/* Info Section */}
          <div className="p-5">
             <div className="text-sm text-secondary font-medium tracking-wide uppercase">
-               <span className="font-extrabold">{likedBy.length}</span> Likes
+               <span className="font-extrabold">{likedBy?.length}</span> Likes
                &nbsp;&nbsp;|&nbsp;&nbsp; By {discoveredBy}
             </div>
 
