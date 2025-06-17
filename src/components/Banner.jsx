@@ -10,6 +10,7 @@ import slider4 from "../assets/gallery4.jpg";
 import slider5 from "../assets/gallery2.jpg";
 import { AuthContext } from "../Context/AuthProvider";
 import locationImg from "../assets/location.png";
+import { motion } from "framer-motion";
 
 const Banner = () => {
    const { loading, setLoading } = useContext(AuthContext);
@@ -37,20 +38,24 @@ const Banner = () => {
       );
    }
 
+   // Fade up animation
+   const fadeUp = {
+      hidden: { opacity: 0, y: 30 },
+      visible: (delay = 0) => ({
+         opacity: 1,
+         y: 0,
+         transition: { duration: 0.6, delay },
+      }),
+   };
+
    return (
       <div className="container mx-auto xs:px-2 md:relative">
          <div>
             {bannerData.length >= 1 && (
                <Swiper
                   loop={true}
-                  autoplay={{
-                     delay: 3000,
-                     disableOnInteraction: false,
-                  }}
-                  pagination={{
-                     dynamicBullets: true,
-                     clickable: true,
-                  }}
+                  autoplay={{ delay: 3000, disableOnInteraction: false }}
+                  pagination={{ dynamicBullets: true, clickable: true }}
                   modules={[Autoplay, Pagination]}
                   className="mySwiper"
                >
@@ -68,20 +73,44 @@ const Banner = () => {
                         >
                            <div className="hero-overlay bg-black opacity-65"></div>
                            <div className="hero-content text-neutral-content">
-                              <div className="max-w-3xl text-center">
-                                 <h3 className="rancho text-2xl italic tracking-widest mb-4">
+                              <motion.div
+                                 initial="hidden"
+                                 whileInView="visible"
+                                 viewport={{ once: true }}
+                                 className="max-w-3xl text-center"
+                              >
+                                 <motion.h3
+                                    variants={fadeUp}
+                                    custom={0}
+                                    className="rancho text-2xl italic tracking-widest mb-4"
+                                 >
                                     {banner.subtitle}
-                                 </h3>
-                                 <h1 className="mb-5 text-2xl md:text-4xl font-bold leading-10 md:leading-14 uppercase">
+                                 </motion.h3>
+
+                                 <motion.h1
+                                    variants={fadeUp}
+                                    custom={0.2}
+                                    className="mb-5 text-2xl md:text-4xl font-bold leading-10 md:leading-14 uppercase"
+                                 >
                                     {banner.title}
-                                 </h1>
-                                 <p className="mb-5 text-[#aab0b3] text-justify md:text-center">
+                                 </motion.h1>
+
+                                 <motion.p
+                                    variants={fadeUp}
+                                    custom={0.4}
+                                    className="mb-5 text-[#aab0b3] text-justify md:text-center"
+                                 >
                                     {banner.description}
-                                 </p>
-                                 <button className="btn btn-white btnHover text-base px-10 rounded-none py-6">
+                                 </motion.p>
+                                 
+                                 <motion.button
+                                    variants={fadeUp}
+                                    custom={0.6}
+                                    className="btn btn-white btnHover text-base px-10 rounded-none py-6"
+                                 >
                                     Learn More
-                                 </button>
-                              </div>
+                                 </motion.button>
+                              </motion.div>
                            </div>
                         </div>
                      </SwiperSlide>
@@ -95,7 +124,7 @@ const Banner = () => {
             <div className="md:absolute -bottom-72 z-40 w-full md:w-11/12 shadow-lg">
                <div className="grid grid-cols-1 md:grid-cols-3 bg-base-200 text-black">
                   {/* Open Hours */}
-                  <div className="bg-white text-center px-6 py-10 flex flex-col items-center gap-4">
+                  <div className="bg-white text-center px-6 py-10 flex flex-col items-center gap-4 hover:scale-105 duration-300">
                      <div className="bg-accent p-6 rounded-full">
                         <img
                            src="https://img.icons8.com/?size=100&id=67447&format=png&color=000000"
@@ -114,7 +143,7 @@ const Banner = () => {
                   </div>
 
                   {/* Find Location */}
-                  <div className="bg-[#252930] text-white text-center px-6 py-10 flex flex-col items-center gap-4">
+                  <div className="bg-[#252930] text-white text-center px-6 py-10 flex flex-col items-center gap-4 hover:scale-105 duration-300">
                      <div className="bg-[#30343B] p-6 rounded-full">
                         <img
                            src={locationImg}
@@ -131,7 +160,7 @@ const Banner = () => {
                   </div>
 
                   {/* Get Ticket */}
-                  <div className="bg-white text-center px-6 py-10 flex flex-col items-center gap-4">
+                  <div className="bg-white text-center px-6 py-10 flex flex-col items-center gap-4 hover:scale-105 duration-300">
                      <div className="bg-accent p-6 rounded-full">
                         <img
                            src="https://img.icons8.com/?size=100&id=AB0jhoFIENKy&format=png&color=000000"

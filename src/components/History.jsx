@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import image from "../assets/cow.png";
 import arrow from "../assets/section-header-seprator.png";
 
@@ -5,11 +6,25 @@ const History = () => {
    return (
       <div className="container mx-auto px-2 md:px-6 lg:px-12 py-10 md:pt-0 md:pb-24">
          <div className="md:flex items-center gap-6">
-            <div className="md:w-[50%] ">
-               <img src={image} alt="" className="mx-auto" />
-            </div>
+            {/* Image Animation */}
+            <motion.div
+               className="md:w-[50%]"
+               initial={{ opacity: 0, y: 100 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+               viewport={{ once: true, amount: 0.3 }}
+            >
+               <img src={image} alt="Pastoria Cow" className="mx-auto" />
+            </motion.div>
 
-            <div className="md:w-[50%] text-center mt-14 md:mt-0">
+            {/* Text Animation */}
+            <motion.div
+               className="md:w-[50%] text-center mt-14 md:mt-0"
+               initial={{ opacity: 0, y: 100 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+               viewport={{ once: true, amount: 0.3 }}
+            >
                <div>
                   <h4 className="ptSerif text-2xl text-primary italic">
                      Welcome to
@@ -17,7 +32,6 @@ const History = () => {
                   <h1 className="text-4xl text-black/90 font-bold uppercase mt-3">
                      Pastoria History
                   </h1>
-
                   <img src={arrow} alt="" className="mx-auto w-[22%] mt-3" />
                </div>
 
@@ -31,10 +45,14 @@ const History = () => {
                   to go where everybody knows your name.
                </p>
 
-               <button className="text-sm text-primary hover:text-black font-medium cursor-pointer duration-300 uppercase">
+               <motion.button
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="text-sm text-primary hover:text-black font-medium cursor-pointer duration-300 uppercase"
+               >
                   Read More
-               </button>
-            </div>
+               </motion.button>
+            </motion.div>
          </div>
       </div>
    );
