@@ -37,7 +37,7 @@ const FeaturedArtifacts = () => {
    return (
       <div className="bg-base-200 container mx-auto px-3 sm:px-10 md:px-6 lg:px-12 py-12 md:pt-16">
          <div className="mb-12">
-            <h2 className="rancho text-secondary text-center text-5xl font-bold tracking-wider opacity-60 mb-3">
+            <h2 className="rancho text-black/90 text-center text-5xl font-bold tracking-wider mb-3">
                Featured Artifacts
             </h2>
 

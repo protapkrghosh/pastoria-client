@@ -23,7 +23,7 @@ const LikedArtifacts = () => {
 
          <div className="container mx-auto px-2 md:px-6 lg:px-12">
             <div className="mb-12">
-               <h2 className="rancho text-secondary text-center text-5xl font-bold tracking-wider opacity-60 mb-3">
+               <h2 className="rancho text-black/90 text-center text-5xl font-bold tracking-wider mb-3">
                   Your Liked Artifacts
                </h2>
 

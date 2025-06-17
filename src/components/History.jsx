@@ -14,7 +14,7 @@ const History = () => {
                   <h4 className="ptSerif text-2xl text-primary italic">
                      Welcome to
                   </h4>
-                  <h1 className="text-4xl text-black font-bold uppercase mt-3">
+                  <h1 className="text-4xl text-black/90 font-bold uppercase mt-3">
                      Pastoria History
                   </h1>
 
