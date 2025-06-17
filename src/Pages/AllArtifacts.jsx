@@ -6,6 +6,9 @@ import { useState } from "react";
 
 const AllArtifacts = () => {
    const artifactsData = useLoaderData();
+   const [searchInput, setSearchInput] = useState("");
+
+   // Typewriter animation setup
    const [text] = useTypewriter({
       words: ["Ancient Wonders", "Echoes of History", "Timeless Treasures"],
       loop: true,
@@ -14,15 +17,29 @@ const AllArtifacts = () => {
       delaySpeed: 1000,
    });
 
-   const [searchInput, setSearchInput] = useState("");
+   // Filter artifacts based on search input
+   const filteredArtifacts = artifactsData.data.filter(
+      (artifact) =>
+         (artifact.artifactName?.toLowerCase() || "").includes(
+            searchInput.toLowerCase()
+         ) ||
+         (artifact.artifactType?.toLowerCase() || "").includes(
+            searchInput.toLowerCase()
+         ) ||
+         (artifact.historicalContext?.toLowerCase() || "").includes(
+            searchInput.toLowerCase()
+         )
+   );
+   
 
    return (
       <div>
          <Helmet>
-            <title>All Artifacs — Pastoria</title>
+            <title>All Artifacts — Pastoria</title>
          </Helmet>
 
          <div className="container mx-auto px-2 md:px-6 lg:px-12 py-16 bg-base-200">
+            {/* Header Section */}
             <div className="text-secondary">
                <h1 className="rancho text-black/90 text-4xl md:text-5xl font-bold text-center tracking-wider mb-5">
                   All Historical Artifacts
@@ -30,13 +47,13 @@ const AllArtifacts = () => {
 
                <p className="md:w-[80%] mx-auto leading-8 text-justify md:text-center text-base-300">
                   Delve into the vast collection of artifacts that have
-                  withstood the test of time—each piece a window into the
+                  withstood the test of time — each piece a window into the
                   civilizations, beliefs, and artistry of those who came before
-                  us
+                  us.
                </p>
             </div>
 
-            {/* Search */}
+            {/* Search Input */}
             <div className="my-10 md:w-3/5 mx-auto px-2 md:px-0">
                <label className="input cusInput">
                   <svg
@@ -66,10 +83,17 @@ const AllArtifacts = () => {
                </label>
             </div>
 
+            {/* Artifacts Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-               {artifactsData.data.map((artifact) => (
-                  <ArtifactCard key={artifact._id} artifact={artifact} />
-               ))}
+               {filteredArtifacts.length === 0 ? (
+                  <p className="text-center col-span-full text-secondary">
+                     No artifacts found matching your search.
+                  </p>
+               ) : (
+                  filteredArtifacts.map((artifact) => (
+                     <ArtifactCard key={artifact._id} artifact={artifact} />
+                  ))
+               )}
             </div>
          </div>
       </div>

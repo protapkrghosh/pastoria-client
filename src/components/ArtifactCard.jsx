@@ -42,7 +42,7 @@ const ArtifactCard = ({ artifact }) => {
             </div>
 
             {/* Type Badge */}
-            <div className="absolute top-4 right-4 bg-white p-1 rounded-none shadow-md text-xs font-medium text-secondary z-10">
+            <div className="absolute top-4 right-4 bg-white/50 py-1 px-2 rounded-full shadow-md text-xs font-medium text-black z-10">
                <div className="flex items-center gap-2">{artifactType}</div>
             </div>
          </div>
