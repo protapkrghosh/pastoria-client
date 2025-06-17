@@ -4,6 +4,7 @@ import { useLoaderData, Link } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
 import { FaRegSadTear } from "react-icons/fa";
 import arrow from "../assets/arrow.png";
+import sectionArrow from "../assets/section-header-seprator.png";
 import { FiLink } from "react-icons/fi";
 
 const LikedArtifacts = () => {
@@ -21,9 +22,13 @@ const LikedArtifacts = () => {
          </Helmet>
 
          <div className="container mx-auto px-2 md:px-6 lg:px-12">
-            <h2 className="rancho text-secondary text-center text-5xl font-bold tracking-wider opacity-60 mb-10">
-               Your Liked Artifacts
-            </h2>
+            <div className="mb-12">
+               <h2 className="rancho text-secondary text-center text-5xl font-bold tracking-wider opacity-60 mb-5">
+                  Your Liked Artifacts
+               </h2>
+
+               <img src={sectionArrow} alt="" className="mx-auto" />
+            </div>
 
             {likedArtifacts.length === 0 ? (
                <div className="max-w-4xl mx-auto bg-[#fff] border-8 border-gray-200 p-5 md:px-10 md:py-14 rounded-xl text-center">
@@ -78,7 +83,7 @@ const LikedArtifacts = () => {
 
                         {/* Info Section */}
                         <div className="p-5 space-y-2">
-                           <div className="text-sm text-secondary flex items-center gap-2 pt-1">
+                           <div className="text-sm text-secondary flex items-center gap-2 py-2">
                               <div>
                                  <span className="font-semibold">
                                     {artifact.likedBy?.length || 0}
@@ -86,7 +91,13 @@ const LikedArtifacts = () => {
                                  Likes &nbsp; |
                               </div>
 
-                              <div>{artifact?.presentLocation}</div>
+                              <div>
+                                 {/* {artifact?.presentLocation} */}
+                                 {artifact?.presentLocation.length > 23
+                                    ? artifact?.presentLocation.slice(0, 21) +
+                                      "..."
+                                    : artifact?.presentLocation}
+                              </div>
                            </div>
 
                            <h3 className="ptSerif text-base font-semibold text-black tracking-wide line-clamp-2">

@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet-async";
 import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { HiOutlineLightBulb } from "react-icons/hi";
+import sectionArrow from "../assets/section-header-seprator.png";
 import axios from "axios";
 import Modal from "../components/Modal";
 import toast from "react-hot-toast";
@@ -47,7 +48,7 @@ const MyArtifacts = () => {
                   if (result.data.deletedCount) {
                      toast.success("Your Artifact has been deleted");
                   }
-                  
+
                   const updatedArtifacts = allArtifacts.filter(
                      (art) => art._id !== id
                   );
@@ -69,9 +70,13 @@ const MyArtifacts = () => {
 
          <div className="bg-base-200 py-14 md:min-h-[80dvh] 2xl:min-h-[60dvh]">
             <div className="container mx-auto px-2 md:px-6 lg:px-12">
-               <h2 className="rancho text-secondary text-5xl text-center font-bold tracking-wider mb-10 opacity-60">
-                  My Artifact
-               </h2>
+               <div className="mb-10">
+                  <h2 className="rancho text-secondary text-5xl text-center font-bold tracking-wider mb-5 opacity-60">
+                     My Artifact
+                  </h2>
+
+                  <img src={sectionArrow} alt="" className="mx-auto" />
+               </div>
 
                {artifacts.length > 0 ? (
                   <>
