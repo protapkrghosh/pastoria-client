@@ -24,7 +24,7 @@ const AllArtifacts = () => {
 
          <div className="container mx-auto px-2 md:px-6 lg:px-12 py-16 bg-base-200">
             <div className="text-secondary">
-               <h1 className="rancho text-black/90 text-5xl font-bold text-center tracking-wider mb-5">
+               <h1 className="rancho text-black/90 text-4xl md:text-5xl font-bold text-center tracking-wider mb-5">
                   All Historical Artifacts
                </h1>
 
@@ -37,7 +37,7 @@ const AllArtifacts = () => {
             </div>
 
             {/* Search */}
-            <div className="my-10 md:w-3/5 mx-auto">
+            <div className="my-10 md:w-3/5 mx-auto px-2 md:px-0">
                <label className="input cusInput">
                   <svg
                      className="h-[1em] opacity-50"

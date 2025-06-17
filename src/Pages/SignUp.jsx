@@ -109,7 +109,7 @@ const SignUp = () => {
          </Helmet>
 
          <div className="lg:flex md:max-w-6xl md:w-full mx-auto bg-white shadow-lg">
-            <div className="lg:w-[50%] border-r border-accent py-16">
+            <div className="lg:w-[50%] border-r border-accent py-1 md:py-16">
                <div>
                   <div className="hero-content mt-14">
                      <div className="text-secondary max-w-md">
