@@ -4,8 +4,11 @@ import { useEffect } from "react";
 import { Link } from "react-router";
 import ArtifactCard from "./ArtifactCard";
 import arrow from "../assets/section-header-seprator.png";
+import { useContext } from "react";
+import { AuthContext } from "../Context/AuthProvider";
 
 const FeaturedArtifacts = () => {
+   const { loading } = useContext(AuthContext);
    const [likedArtifacts, setLikedArtifacts] = useState([]);
 
    useEffect(() => {
@@ -19,6 +22,18 @@ const FeaturedArtifacts = () => {
          });
    }, []);
 
+   if (loading) {
+      return (
+         <div className="flex justify-center items-center min-h-[50dvh]">
+            {/* Loading Animation */}
+            <img
+               src="https://bookly-theme.myshopify.com/cdn/shop/files/icons8-literature_1.gif?v=1679027144&width=1920"
+               alt=""
+            />
+         </div>
+      );
+   }
+
    return (
       <div>
          <div className="bg-base-200 container mx-auto px-3 sm:px-10 md:px-6 lg:px-12 py-12 md:pt-16">
@@ -30,6 +45,7 @@ const FeaturedArtifacts = () => {
                <img src={arrow} alt="" className="mx-auto" />
             </div>
 
+            {/* Featured Artifact Cards */}
             <div>
                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {likedArtifacts.map((artifact) => (
