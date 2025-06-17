@@ -1,6 +1,7 @@
-import { MdOutlineZoomOutMap } from "react-icons/md";
+import arrow from "../assets/arrow.png";
 import { Link } from "react-router";
 import image from "../assets/placeholder.jpg";
+import { FiLink } from "react-icons/fi";
 
 const ArtifactCard = ({ artifact }) => {
    const {
@@ -29,11 +30,15 @@ const ArtifactCard = ({ artifact }) => {
             />
 
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-65 transition-opacity duration-300 flex items-center justify-center h-[230px]">
-               <MdOutlineZoomOutMap
-                  size={70}
-                  className="text-white opacity-30"
-               />
+            <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center h-[230px]">
+               <img src={arrow} alt="Icon" className="w-1/2 h-2" />
+
+               <Link
+                  to={`/artifact/${artifact._id}`}
+                  className="bg-primary/80 p-3 mt-4"
+               >
+                  <FiLink size={17} className="text-white" />
+               </Link>
             </div>
 
             {/* Type Badge */}
@@ -45,8 +50,8 @@ const ArtifactCard = ({ artifact }) => {
          {/* Info Section */}
          <div className="p-5">
             <div className="text-sm text-secondary font-medium tracking-wide uppercase">
-               <span className="font-extrabold">{likedBy.length}</span> Likes &nbsp;&nbsp;|&nbsp;&nbsp; By{" "}
-               {discoveredBy}
+               <span className="font-extrabold">{likedBy.length}</span> Likes
+               &nbsp;&nbsp;|&nbsp;&nbsp; By {discoveredBy}
             </div>
 
             <h2 className="ptSerif text-2xl font-bold text-black my-4 line-clamp-2">

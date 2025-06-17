@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLoaderData, Link } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
-import { FaHeart, FaRegSadTear } from "react-icons/fa";
+import { FaRegSadTear } from "react-icons/fa";
 import arrow from "../assets/arrow.png";
 import { FiLink } from "react-icons/fi";
 
