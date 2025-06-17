@@ -21,7 +21,7 @@ const History = () => {
                   <img src={arrow} alt="" className="mx-auto w-[22%] mt-3" />
                </div>
 
-               <p className="ptSerif text-secondary leading-8 mt-10 mb-7">
+               <p className="ptSerif text-secondary leading-8 mt-10 mb-7 text-justify md:text-start">
                   Then one day he was shooting at food and up through the ground
                   came a bubbling crude oil that is so lets make the most of
                   this beautiful day since we are together space the final
