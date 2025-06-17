@@ -71,7 +71,7 @@ const MyArtifacts = () => {
          <div className="bg-base-200 py-14 md:min-h-[80dvh] 2xl:min-h-[60dvh]">
             <div className="container mx-auto px-2 md:px-6 lg:px-12">
                <div className="mb-10">
-                  <h2 className="rancho text-secondary text-5xl text-center font-bold tracking-wider mb-5 opacity-60">
+                  <h2 className="rancho text-secondary text-5xl text-center font-bold tracking-wider mb-3 opacity-60">
                      My Artifact
                   </h2>
 
