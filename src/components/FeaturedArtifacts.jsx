@@ -66,3 +66,4 @@ const FeaturedArtifacts = () => {
 };
 
 export default FeaturedArtifacts;
+

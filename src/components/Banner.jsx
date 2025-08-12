@@ -102,7 +102,7 @@ const Banner = () => {
                                  >
                                     {banner.description}
                                  </motion.p>
-                                 
+
                                  <motion.button
                                     variants={fadeUp}
                                     custom={0.6}
