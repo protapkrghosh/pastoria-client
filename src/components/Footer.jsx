@@ -15,6 +15,13 @@ import arrow from "../assets/arrow.png";
 import { GiPaperArrow } from "react-icons/gi";
 
 const Footer = () => {
+   const socialLinks = [
+      { icon: FaFacebookF, url: "https://facebook.com" },
+      { icon: FaTwitter, url: "https://twitter.com" },
+      { icon: FaLinkedinIn, url: "https://linkedin.com" },
+      { icon: FaTumblr, url: "https://tumblr.com" },
+   ];
+
    return (
       <div className="bg-black text-base-300">
          <footer className="container mx-auto px-2 md:px-6 lg:px-12 py-20">
@@ -30,9 +37,7 @@ const Footer = () => {
                         alt="Logo"
                         className="h-12 contrast-125 rounded-full"
                      />
-                     <span className="rancho tracking-wider">
-                        Pastoria
-                     </span>
+                     <span className="rancho tracking-wider">Pastoria</span>
                   </Link>
 
                   <p className="text-sm text-color-accent my-10 leading-6">
@@ -43,17 +48,18 @@ const Footer = () => {
                      researcher, collector, or enthusiast — discover the stories
                      behind the artifacts that shaped our world.
                   </p>
+
                   <div className="flex gap-4">
-                     {[FaFacebookF, FaTwitter, FaLinkedinIn, FaTumblr].map(
-                        (Icon, idx) => (
-                           <button
-                              key={idx}
-                              className="w-10 h-10 flex items-center justify-center rounded-full bg-white text-primary hover:bg-primary hover:text-white duration-300 cursor-pointer"
-                           >
-                              <Icon />
-                           </button>
-                        )
-                     )}
+                     {socialLinks.map(({ icon: Icon, url }, idx) => (
+                        <a
+                           key={idx}
+                           href={url}
+                           target="_blank"
+                           className="w-10 h-10 flex items-center justify-center rounded-full bg-white text-primary hover:bg-primary hover:text-white duration-300"
+                        >
+                           <Icon />
+                        </a>
+                     ))}
                   </div>
                </div>
 
